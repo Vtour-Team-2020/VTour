@@ -1,5 +1,8 @@
 import React from 'react';
 import { Box } from 'grommet';
+import InfoPanel from './toursubcomponents/InfoPanel'
+import TopActionBar from './toursubcomponents/TopActionBar'
+import MiniMap from './toursubcomponents/MiniMap'
 
 class Tour extends React.Component{
     constructor(props) {
@@ -10,9 +13,20 @@ class Tour extends React.Component{
     }
     
     render(){
-        return(<Box>
-            <h1>Hi I am a default component</h1>
-        </Box>)
+        const component =
+        <Box
+            border={{ color: 'brand', size: 'large' }}
+            width = "100%"
+            height = "large"
+            background = "dark-3"
+            round = "large"
+        >    
+            <TopActionBar />
+            <InfoPanel />
+            <MiniMap />
+            
+        </Box>
+        return(component)
     }
 }
 

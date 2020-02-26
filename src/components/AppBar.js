@@ -30,7 +30,7 @@ class AppBar extends React.Component{
             <Heading level='3' margin='none'>
                 Virtual Tour 2020
             </Heading>
-            <Button icon={<Inspect />}  onClick={() => {}} />
+
         </Box>)
     }
 }
