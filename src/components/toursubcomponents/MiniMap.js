@@ -13,10 +13,23 @@ class MiniMap extends React.Component{
     
     render(){
         return(<Box
-            justify = "end"
-            margin = {{ "right" : "0"}}
-            width = "50%"
+            // justify all its content with the main axis
+            justify = "center"
+
+            // defines the direction of the central axis
+            direction = "row"
+
+            // make it appear on top of its background
+            elevation = "small"
+            
+            // aligns itself (center) with the immediate parent's central axis
+            alignSelf = "left"
+
+            // dimension with respect to its parent component
+            width = "30%"
             height = "40%"
+
+            // border definition
             border={{
                 "color": "border",
                 "size": "medium",

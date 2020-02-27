@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Grommet } from 'grommet';
+import { Grommet, Box } from 'grommet';
 
-import Yui from './components/Yui'
-import AppBar from './components/AppBar'
+import Footer from './components/Footer'
 import Introduction from './components/Introduction'
 import Tour from './components/Tour'
+
 
 // defines a theme as the global style to use for the entire page
 const theme = {
@@ -21,16 +21,17 @@ const theme = {
 };
 
 function App() {
-  console.log(theme)
-
   return (
-    <Grommet theme={theme} full>
-      <h1>my name is yui</h1>
-        <AppBar/>
-        <Introduction />
-        <Tour />
-        <Yui />
-    </Grommet>
+    // potentially bad practice by not utilising theme variable to set overall background
+    <Box 
+      background="linear-gradient(102.77deg, #015374 -9.18%, #002575 209.09%)"
+    >
+      <Grommet theme={theme} full>
+          <Introduction />
+          <Tour />
+          <Footer />
+      </Grommet>
+    </Box>
   );
 }
 
