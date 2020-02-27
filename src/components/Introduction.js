@@ -23,7 +23,7 @@ class Sample extends React.Component{
             <Main>
             <Heading
                     alignSelf = "center"
-                    color = "white">
+                    color = "rgb(255, 0, 255)">
                 Welcome to Eusoff Virtual Tour
             </Heading>
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grommet } from 'grommet';
 
-
+import Yui from './components/Yui'
 import AppBar from './components/AppBar'
 import Introduction from './components/Introduction'
 import Tour from './components/Tour'
@@ -25,9 +25,11 @@ function App() {
 
   return (
     <Grommet theme={theme} full>
+      <h1>my name is yui</h1>
         <AppBar/>
         <Introduction />
         <Tour />
+        <Yui />
     </Grommet>
   );
 }

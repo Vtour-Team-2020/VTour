@@ -22,6 +22,7 @@ class InfoPanel extends React.Component{
                 "style": "dashed",
                 "side": "all"
               }}>
+            <img src="https://www.w3schools.com/images/picture.jpg" alt="Mountain"></img>      
             <Paragraph>Hi I am the info panel component</Paragraph>
         </Box>)
     }
