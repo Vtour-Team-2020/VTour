@@ -1,31 +1,129 @@
 import React from 'react';
-import { Box, Paragraph } from 'grommet';
-import { Notification } from 'grommet-icons';
-import Logo from "./minion.gif"
+import { Box, Button, Layer, Image} from 'grommet';
+import { Bar, Camera, CirclePlay, CircleQuestion, Medium } from 'grommet-icons';
 
 class InfoPanel extends React.Component{
     constructor(props) {
         super(props);
         
         this.state = {
+            showHelp : false
         };
+
+        this.activateHelp = this.activateHelp.bind(this);
+        this.deactivateHelp = this.deactivateHelp.bind(this);        
     }
     
     render(){
-        return(<Box
-            justify = "end"
-            margin = {{ "right" : "0"}}
-            width = "50%"
-            height = "50%"
+        return(
+        <Box
+            // justify all its content with the main axis
+            justify = "center"
+
+            // defines the direction of the central axis
+            direction = "row"
+
+            // make it appear on top of its background
+            elevation = "small"
+            
+            // aligns itself (end - right side) with the immediate parent's central axis
+            alignSelf = "end"
+
+            // dimension with respect to its parent component
+            width = "7%"
+            height = "40%"
+
+            // giving the panel some space to breathe
+            margin = {{
+                top:"8%",
+                bottom:"2%",
+                right:"2%"
+            }}
+            // border definition to eccentuate this component
             border={{
                 "color": "border",
                 "size": "medium",
-                "style": "dashed",
+                "style": "groove",
                 "side": "all"
-              }}>
-            <Paragraph>Hi I am the info panel component</Paragraph>
-            <img src={Logo}/>
+              }}
+
+            // background to make it stand out
+            background = {{
+                "color": "accent-4",
+                //"opacity": "strong"
+            }}
+
+            // consistent rounded edges
+            round = "medium"
+            >
+
+            <Box
+                direction="column"
+                justify="center"
+                background="accent-4"
+            >
+                <Box
+                    // Animate CircleQuestion
+                    animation="pulse"
+                    >
+                <Box/>
+                <Button
+                    icon={<CircleQuestion />}
+                    alignSelf = "center"
+                    onClick={this.activateHelp}
+                    />
+                {
+                    this.state.showHelp &&
+                    <Layer
+                        onEsc={() => this.deactivateHelp()}
+                        onClickOutside={() => this.deactivateHelp()}
+                        position = "left"                        
+                        margin={{ "left":"2%" }}
+                        animation="slide">
+
+                        <Box 
+                            height="medium" 
+                            overflow="auto" 
+                            border= {{color:'#f57f17', size:"medium", style:"inset"}}
+                            background={{color:"accent-4"}}
+                            round="medium">
+                            <Box pad="xlarge" >
+                                Corner position
+                                <Image fit="cover" src={require("./eusoff.jpg")}/>
+                            </Box>
+                        </Box>
+                    </Layer>
+                }
+                </Box>
+
+                <Button
+                    icon={<Bar />}
+                    alignSelf = "center"
+                    onClick={() => {}}
+                    />
+                <Button
+                    icon={<Camera />}
+                    onClick={() => {}}
+                />
+                <Button
+                    icon={<CirclePlay />}
+                    onClick={() => {}}
+                />
+            </Box>
         </Box>)
+    }
+    activateHelp(){
+        this.setState( function() {
+            return {
+              showHelp : true
+            };
+        });
+    }
+
+    deactivateHelp(){
+        this.setState({
+            showHelp : false
+        });        
     }
 }
 
