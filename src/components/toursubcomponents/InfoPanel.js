@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Layer } from 'grommet';
-import { Bar, Camera, CirclePlay, CircleQuestion } from 'grommet-icons';
+import { Box, Button, Layer, Image} from 'grommet';
+import { Bar, Camera, CirclePlay, CircleQuestion, Medium } from 'grommet-icons';
 
 class InfoPanel extends React.Component{
     constructor(props) {
@@ -49,8 +49,8 @@ class InfoPanel extends React.Component{
 
             // background to make it stand out
             background = {{
-                "color": "brand",
-                "opacity": "strong"
+                "color": "accent-4",
+                //"opacity": "strong"
             }}
 
             // consistent rounded edges
@@ -60,9 +60,13 @@ class InfoPanel extends React.Component{
             <Box
                 direction="column"
                 justify="center"
-                overflow = "scroll"
+                background="accent-4"
             >
-                <Box>
+                <Box
+                    // Animate CircleQuestion
+                    animation="pulse"
+                    >
+                <Box/>
                 <Button
                     icon={<CircleQuestion />}
                     alignSelf = "center"
@@ -74,10 +78,20 @@ class InfoPanel extends React.Component{
                         onEsc={() => this.deactivateHelp()}
                         onClickOutside={() => this.deactivateHelp()}
                         position = "left"                        
-                        >
-                            <Box height="small" overflow="auto">
-                                <Box pad="xlarge">Corner top-right position</Box>
+                        margin={{ "left":"2%" }}
+                        animation="slide">
+
+                        <Box 
+                            height="medium" 
+                            overflow="auto" 
+                            border= {{color:'#f57f17', size:"medium", style:"inset"}}
+                            background={{color:"accent-4"}}
+                            round="medium">
+                            <Box pad="xlarge" >
+                                Corner position
+                                <Image fit="cover" src={require("./eusoff.jpg")}/>
                             </Box>
+                        </Box>
                     </Layer>
                 }
                 </Box>
