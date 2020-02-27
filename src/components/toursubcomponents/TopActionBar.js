@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Layer } from 'grommet';
+import { Box, Button, Layer, Carousel, Image } from 'grommet';
 import { CaretUp, CaretDown, CaretNext, CaretPrevious,
         Home, CircleQuestion} from 'grommet-icons';
 
@@ -45,8 +45,8 @@ class TopActionBar extends React.Component{
 
             // background to make it stand out
             background = {{
-                "color": "brand",
-                "opacity": "strong"
+                "color": "accent-4",
+                //"opacity": "strong"
             }}
                         
             // border design
@@ -66,8 +66,7 @@ class TopActionBar extends React.Component{
                 direction = "row"
                 flex = "false"
                 gap = "medium"
-                justify = "between"
-                overflow={{ horizontal: 'hidden' }}
+                justify = "between"overflow={{horizontal:"hidden"}}
             >
                 <Button icon={<Home />} ></Button>
                 <Button icon={<CaretUp />}  onClick={this.props.getActionUpdate}></Button>
@@ -81,11 +80,11 @@ class TopActionBar extends React.Component{
                         <Layer
                         onEsc={() => this.deactivateHelp()}
                         onClickOutside={() => this.deactivateHelp()}
-                        position = "right"
-                        >   
-                            <Box height="small" overflow="auto">
-                                <Box pad="xlarge">Corner top-right position</Box>
-                            </Box>
+                        position = "center"
+                        > 
+                        <Box height = "small" overflow = "auto">  
+                            <Box pad = "xlarge"> Corner top right position </Box>
+                        </Box>
                         </Layer>
                     }
                 </Box>
