@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Paragraph } from 'grommet';
 import { Notification } from 'grommet-icons';
+import logo from './kums.jpg';
 
 class MiniMap extends React.Component{
     constructor(props) {
@@ -35,7 +36,9 @@ class MiniMap extends React.Component{
                 "style": "dashed",
                 "side": "all"
               }}>
+            <img src={logo} alt="Logo" />;     
             <Paragraph>Hi I am the minimap component</Paragraph>
+            
         </Box>)
     }
 }
