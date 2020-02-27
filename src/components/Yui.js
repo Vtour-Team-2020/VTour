@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box } from 'grommet';
+import { Box ,Button, Layer, Text} from 'grommet';
+import { Close } from 'grommet-icons';
 import { Notification } from 'grommet-icons';
 
 class Yui extends React.Component{
@@ -11,8 +12,18 @@ class Yui extends React.Component{
     }
     
     render(){
-        return(<Box>
-            <h1>Hi I am Yuichiro</h1>
+        return(<Box
+            background = "white"
+            
+        >
+            <Box
+            direction="coulum"
+            border={{ color: 'brand', size: 'large' }}
+            pad="medium"
+            >
+            <Box pad="small" background="dark-3" />
+            <Box pad="medium" background="light-3" />
+            </Box>
         </Box>)
     }
 }

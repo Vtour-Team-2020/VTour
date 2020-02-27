@@ -4,6 +4,7 @@ import { Grommet, Box } from 'grommet';
 import Footer from './components/Footer'
 import Introduction from './components/Introduction'
 import Tour from './components/Tour'
+import Yui from './components/Yui'
 
 
 // defines a theme as the global style to use for the entire page
@@ -27,9 +28,10 @@ function App() {
       background="linear-gradient(102.77deg, #015374 -9.18%, #002575 209.09%)"
     >
       <Grommet theme={theme} full>
-          <Introduction />
+          {/* <Introduction />
           <Tour />
-          <Footer />
+          <Footer /> */}
+          <Yui />
       </Grommet>
     </Box>
   );
