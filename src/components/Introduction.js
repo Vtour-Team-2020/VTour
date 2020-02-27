@@ -18,12 +18,14 @@ class Sample extends React.Component{
             align="center" 
             background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)"
             pad="large"
-            height="medium"   
+            height="medium" 
+            overflow = "scroll"  
+            animation = "pulse"
         >
             <Main>
             <Heading
                     alignSelf = "center"
-                    color = "white">
+                    color = "yellow">
                 Welcome to Eusoff Virtual Tour
             </Heading>
 
@@ -43,8 +45,9 @@ class Sample extends React.Component{
             onClick={() => {}} 
             active="true"
             alignSelf = "center"
-            label = "Start Exploring!"
+            label = "Start Exploring"
             color = "white"
+            animation = "pulse"
             />
             </Main>
         </Box>

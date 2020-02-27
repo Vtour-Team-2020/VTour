@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Paragraph } from 'grommet';
 import { Notification } from 'grommet-icons';
+import Logo from "./minion.gif"
 
 class InfoPanel extends React.Component{
     constructor(props) {
@@ -23,6 +24,7 @@ class InfoPanel extends React.Component{
                 "side": "all"
               }}>
             <Paragraph>Hi I am the info panel component</Paragraph>
+            <img src={Logo}/>
         </Box>)
     }
 }

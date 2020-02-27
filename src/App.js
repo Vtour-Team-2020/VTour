@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grommet } from 'grommet';
-
+import Ziming from './components/Ziming.js';
 
 import AppBar from './components/AppBar'
 import Introduction from './components/Introduction'
@@ -26,7 +26,7 @@ function App() {
   return (
     <Grommet theme={theme} full>
         <AppBar/>
-        <Introduction />
+        <Introduction/>
         <Tour />
     </Grommet>
   );
