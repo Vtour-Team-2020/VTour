@@ -1,6 +1,4 @@
 export default {
-    "comment" : "the following objects will be initalised in the JS files as Location object",
-
     "Entrance" : {
         "name":"Entrance",
 
@@ -12,6 +10,7 @@ export default {
         "juice":"some juice",
         "photo":"some photo",
         "video":"some video"
+
     },
 
     "Golden Gate" : {

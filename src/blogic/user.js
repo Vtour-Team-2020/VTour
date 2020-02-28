@@ -1,11 +1,10 @@
-import Location from "./Location"
+import Map from "./Map.js"
 
-
-
-class User {
-    constructor(location){
+export default class User {
+    constructor(){
         // initialise a start location for all users
-        this.Currentlocation = new Location(location);
+        // this.Currentlocation = Map.getStartPoint();
+        this.map = new Map()
     }
 
     /**
@@ -13,19 +12,22 @@ class User {
      * @param {User input direction} direction 
      */
     changeLocation(direction){
+        console.log("direction input from user is " + direction)
+        console.log(this.Currentlocation)
         try {
-            newLocation = this.Currentlocation.Move(direction);
+            let newLocation = this.Currentlocation.move(direction);
             
             console.log("User now moves to" + newLocation.name)
 
             this.Currentlocation = newLocation
         } catch (err) {
-            console.log("Not a valid location")
+            // console.log(err)
         }
     }
 
+    //
     getJuice(){ 
-        console.log("get juice")
+        return this.map.getCurrentLocation().getJuice();
     }
 
     getPhotos(){
