@@ -49,6 +49,6 @@ export default class Location {
     }
 
     getJuice(){
-        return "getJuice";
+        return this.juice;
     }
 }
