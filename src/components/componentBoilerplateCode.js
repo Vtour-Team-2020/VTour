@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from 'grommet';
-import { Notification } from 'grommet-icons';
+
 
 class BoilerPlate extends React.Component{
     constructor(props) {
@@ -12,7 +12,7 @@ class BoilerPlate extends React.Component{
     
     render(){
         return(<Box>
-            <h1>Hi I am a default component</h1>
+            
         </Box>)
     }
 }

@@ -1,4 +1,4 @@
-class Location {
+export default class Location {
     /**
      * 
      * @param {*} name 
@@ -32,13 +32,13 @@ class Location {
      */
     canMove (direction) {
         switch(direction){
-            case up:
+            case "up":
                 return this.upNeighbour !== undefined; //potential bug:!= vs !==, undefined vs null
-            case down:
+            case "down":
                 return this.downNeighbour !== undefined;
-            case left:
+            case "left":
                 return this.leftNeighbour !== undefined;
-            case right:
+            case "right":
                 return this.rightNeighbour !== undefined;
             default:
                 return "error, invalid direction";    
@@ -51,18 +51,16 @@ class Location {
      */
     move (direction) {
         switch(direction){
-            case up:
+            case "up":
                 return this.upNeighbour 
-            case down:
+            case "down":
                 return this.downNeighbour
-            case left:
+            case "left":
                 return this.leftNeighbour 
-            case right:
+            case "right":
                 return this.rightNeighbour 
             default:
                 return "error, invalid direction";    
         }
     }
 }
-
-export default Location;
