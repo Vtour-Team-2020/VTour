@@ -1,5 +1,4 @@
 export default {
-    "comment" : "the following objects will be initalised in the JS files as Location object",
 
     "Entrance" : {
         "name":"Entrance",
