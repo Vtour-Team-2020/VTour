@@ -7,10 +7,11 @@ class TopActionBar extends React.Component{
     constructor(props) {
         super(props);
 
-       this.props.getActionUpdate()
-
         this.state = {
             moveUp : false,
+            moveDown : false,
+            moveLeft : false,
+            moveRight : false,
             showHelp : false
         };
 
@@ -19,8 +20,6 @@ class TopActionBar extends React.Component{
     }
     
     render(){
-        console.log(this.state.showHelp)
-        console.log(this.props)
         return(<Box
             // justify all its content with the main axis
             justify = "center"
@@ -35,7 +34,7 @@ class TopActionBar extends React.Component{
             alignSelf = "center"
 
             // dimension with respect to its parent component
-            width = "35%"
+            width = "45%"
             height = "9%"
 
             // some gap to breathe
@@ -64,18 +63,38 @@ class TopActionBar extends React.Component{
                 align = "center"
                 as = "header"
                 direction = "row"
-                flex = "false"
                 gap = "medium"
                 justify = "between"
-                overflow={{ horizontal: 'hidden' }}
+                overflow={{ horizontal: 'scroll' }}
             >
-                <Button icon={<Home />} ></Button>
-                <Button icon={<CaretUp />}  onClick={this.props.getActionUpdate}></Button>
-                <Button icon={<CaretDown />}></Button>
-                <Button icon={<CaretPrevious />}></Button>
-                <Button icon={<CaretNext />}></Button>
-                
-                <Box>
+                <Box
+                    width="20%"
+                    height="100%"
+                >
+                    <Button icon={<CaretUp />}  onClick={this.props.getUpActionUpdate}></Button>
+                </Box>
+                <Box
+                    width="20%"
+                    height="100%"
+                >
+                    <Button icon={<CaretDown />} onClick={this.props.getDownActionUpdate}></Button>
+                </Box>
+                <Box
+                    width="20%"
+                    height="100%"
+                >
+                    <Button icon={<CaretPrevious /> } onClick={this.props.getLeftActionUpdate}></Button>
+                </Box>
+                <Box
+                    width="20%"
+                    height="100%"
+                >
+                    <Button icon={<CaretNext /> } onClick={this.props.getRightActionUpdate}></Button>
+                </Box>
+                <Box
+                    width="20%"
+                    height="100%"
+                >
                     <Button icon={<CircleQuestion /> } onClick={this.activateHelp}></Button>
                     { this.state.showHelp &&
                         <Layer

@@ -21,8 +21,9 @@ class Sample extends React.Component{
             <Main>
             <Heading
                     alignSelf = "center"
-                    color = "white">
-                Welcome to <span style = {{ color : "yellow"}} >Eusoff</span> Virtual Tour
+                    level = "1"
+                    color = "#A5A5A5">
+                Welcome to <span style = {{ color : "yellow" }} >Eusoff</span> Virtual Tour
             </Heading>
             </Main>
         </Box>

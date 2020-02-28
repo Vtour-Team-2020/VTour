@@ -25,7 +25,7 @@ class Footer extends React.Component{
             direction='row'
             align='center'
             justify='between'
-            background="linear-gradient(102.77deg, #FFFFFF -9.18%, #024ef3 209.09%)"
+            background="linear-gradient(102.77deg, #414141 -9.18%, #303030 209.09%)"
             
             pad={{ left: 'medium', right: 'small', vertical: 'small' }}
             elevation='medium'
