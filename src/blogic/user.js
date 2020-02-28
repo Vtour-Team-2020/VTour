@@ -26,7 +26,14 @@ export default class User {
     getAccesiblelocations(){
         return this.map.getAccesiblelocations();
     }
-    //
+    
+    /**
+     *  get transition gif
+     */
+    getTransitionGif(direction){
+        return this.map.getTransitionGif(direction);
+    }
+
     getJuice(){ 
         return this.map.getCurrentLocation().getJuice();
     }
@@ -37,5 +44,9 @@ export default class User {
 
     getVideos(){
         console.log("get videos")
+    }
+
+    getEntranceImage(){
+        return this.map.getEntranceImage()
     }
 }

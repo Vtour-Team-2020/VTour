@@ -1,23 +1,25 @@
+import React from "react"
 import AllLocations from "./locationdata"
 import Location from "./Location"
+
+import Media from "./mediaResource"
+import mediaResource from "./mediaResource";
 
 export default class Map {
     constructor(){
         // init empty array
         this.locationArray = [];
+        this.entrancePic = Media.entrance
+
         this.currentLocation = "";
-        for( var key in AllLocations){
-
+        for( var key in AllLocations ){
             if (AllLocations.hasOwnProperty(key)){
-
                 // construct location object
                 let newLocation = new Location(AllLocations[key])
-
                 // bind Entrance to newLocation
                 if (newLocation.name === "Entrance"){
                     this.currentLocation = newLocation;
                 }
-
                 this.locationArray.push(newLocation);
             }
         }
@@ -65,5 +67,27 @@ export default class Map {
     getAccesiblelocations(){
         this.currentLocation.getAllNeighbours();
         return;
+    }
+
+    /**
+     * 
+     */
+    getEntranceImage(){
+        return this.entrancePic
+    }
+
+    /**
+     * returns the transition gif when a user makes a location change
+     */
+    getTransitionGif(direction){
+        try{
+            
+            let gif_key = this.currentLocation.getGifKey(direction)
+            let gif = mediaResource.transitiongifs[gif_key]
+            console.log(this.currentLocation)
+            return gif;
+        } catch(err) {
+            console.log(err)
+        }
     }
 }

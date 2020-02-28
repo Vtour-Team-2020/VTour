@@ -8,9 +8,8 @@ import { Box, Stack, Image } from 'grommet';
 import InfoPanel from './toursubcomponents/InfoPanel'
 import TopActionBar from './toursubcomponents/TopActionBar'
 
-// import image resources
-import pic1 from './a.png'
-import pic2 from './b.jpg'
+// import gif player
+import GifPlayer from "react-gif-player"
 
 // import biz loig
 import User from '../blogic/User'
@@ -21,7 +20,16 @@ class Tour extends React.Component{
         super(props);
         
         this.state = {
-            currentUser : new User()
+            currentUser : new User(),
+
+            // this state becomes permenantly false if user starts moving
+            userActive : false,
+
+            // gif, initialise to empty string
+            gif : "",
+
+            // entrance pic
+            entrance : ""
         };
 
         // binding all these methods to the child components to access their state update
@@ -31,9 +39,14 @@ class Tour extends React.Component{
         this.getLeftActionUpdate = this.getLeftActionUpdate.bind(this)
 
         this.gifRendering = this.gifRendering.bind(this)
+
+        this.setUserActive = this.setUserActive.bind(this)
     }
     
-    render(){
+    render () {
+
+        this.state.entrance = this.state.currentUser.getEntranceImage()
+        
         let component = 
         <Box
         width = "90%"
@@ -52,13 +65,16 @@ class Tour extends React.Component{
                 round = "large"
                 alignContent = "center"
                 >
-                    <Image     
+                    { !this.state.userActive && <Image     
                         fit="contain"
                         fill={true}
-                        src={pic1}
-                        />
+                        src={this.state.entrance}
+                        />}
 
-            {/* {this.gifRendering()} */}
+                    { this.state.userActive &&
+                        this.gifRendering(this.state.gif)
+                    }
+                {console.log(this.state.gifkey)}
             </Box>
         <Box>
             {/* Passing down the parent's getActionUpdate as a prop to be called in the
@@ -74,61 +90,58 @@ class Tour extends React.Component{
 
     getUpActionUpdate() {
         console.log("User moves up")
+        this.state.gif = this.state.currentUser.getTransitionGif("up");
         this.state.currentUser.changeLocation("up");
+        this.setUserActive();
     }
 
     getDownActionUpdate() {
         console.log("User moves down")
+        this.state.gif = this.state.currentUser.getTransitionGif("down");
         this.state.currentUser.changeLocation("down");
+        this.setUserActive();
     }
 
     getRightActionUpdate() {
         console.log("User moves right")
+        this.state.gif = this.state.currentUser.getTransitionGif("right");
         this.state.currentUser.changeLocation("right");
+        this.setUserActive();
     }
 
     getLeftActionUpdate() {
         console.log("User moves up")
+        this.state.gif = this.state.currentUser.getTransitionGif("left");
         this.state.currentUser.changeLocation("left");
+        this.setUserActive();
     }
 
-    gifRendering() {
-        
-        let displayPic = pic1;
+    setUserActive(){
+        this.setState(function(){
+            return {
+                userActive : true
+            }
+        })
+    }
 
-        if(this.state.moveUp){
-            displayPic = pic1;
-        }else{
-            displayPic = pic2;
-        }
-
-        if(this.state.renderGif){
+    gifRendering(gifkey) {
+    
             return(
                 <Box
                     direction="row"
                     justify="center"
                 >
-                    {/* <GifPlayer
-                        gif={gif} // load gif  
+                    <GifPlayer
+                        gif={gifkey} // load gif  
                         autoplay={true} // enable auto play
-                    /> */}
-                    <Image     
+                    />
+                    {/* <Image     
                         fit="contain"
-                        // fill={true}
-                        src={displayPic}
-                        />
+                        fill={true}
+                        src={gifkey}
+                        /> */}
                 </Box>
             )
-        }
-        else{
-            return(
-                <Image     
-                fit="contain"
-                // fill={true}
-                src={displayPic}
-                />
-            )
-        }
     }
 }
 

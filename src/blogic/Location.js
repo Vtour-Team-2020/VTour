@@ -1,5 +1,3 @@
-import LocationData from "./locationdata"
-
 export default class Location {
     /**
      * 
@@ -20,6 +18,12 @@ export default class Location {
         this.downNeighbour = locationJSON.downNeighbour;
         this.leftNeighbour = locationJSON.leftNeighbour;
         this.rightNeighbour = locationJSON.rightNeighbour;
+
+        // A location is aware of the video to play
+        this.upVideo = locationJSON.upVideo;
+        this.downVideo = locationJSON.downVideo;
+        this.leftVideo = locationJSON.leftVideo;
+        this.rightVideo = locationJSON.rightVideo;
 
         // Special attributes to the location
         this.juice = locationJSON.juice;
@@ -43,12 +47,31 @@ export default class Location {
     }
 
     getAllNeighbours(){
-        console.log(
-            "up:"+this.upNeighbour + " down: " + this.downNeighbour + " left: " + this.leftNeighbour + " right: " + this.rightNeighbour
-        )
+        var neighbours = {
+            "upNeighbour" : this.upNeighbour,
+            "downNeighbour" : this.downNeighbour,
+            "leftNeighbour" : this.leftNeighbour,
+            "rightNeighbour" : this.rightNeighbour,
+        }
+        return neighbours
     }
 
     getJuice(){
         return this.juice;
+    }
+
+    getGifKey(direction){
+        switch(direction){
+            case "up":
+                return this.upVideo;
+            case "down":
+                return this.downVideo;
+            case "left":
+                return this.leftVideo;
+            case "right":
+                return this.rightVideo
+            default:
+                throw("Input is not captured, please check user input")
+        }        
     }
 }
