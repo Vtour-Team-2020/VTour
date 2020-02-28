@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from 'grommet';
 import { Notification } from 'grommet-icons';
 
-class Sample extends React.Component{
+class BoilerPlate extends React.Component{
     constructor(props) {
         super(props);
         
@@ -17,4 +17,4 @@ class Sample extends React.Component{
     }
 }
 
-export default Sample;
+export default BoilerPlate;
