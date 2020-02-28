@@ -13,16 +13,7 @@ export default class User {
      */
     changeLocation(direction){
         console.log("direction input from user is " + direction)
-        console.log(this.Currentlocation)
-        try {
-            let newLocation = this.Currentlocation.move(direction);
-            
-            console.log("User now moves to" + newLocation.name)
-
-            this.Currentlocation = newLocation
-        } catch (err) {
-            // console.log(err)
-        }
+        this.map.move(direction);
     }
 
     //

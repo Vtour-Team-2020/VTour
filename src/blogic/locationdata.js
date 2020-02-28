@@ -2,26 +2,36 @@ export default {
     "Entrance" : {
         "name":"Entrance",
 
-        "upNeighbour":"Golden Gate",
+        "upNeighbour": "Golden Gate",
         "downNeighbour":null,
         "leftNeighbour":null,
         "rightNeighbour":null,
+
+        "upVideo":null,
+        "downVideo":null,
+        "leftVideo":null,
+        "rightVideo":null,
         
-        "juice":"some juice",
+        "juice":"this is where Eusoffians start their journey",
         "photo":"some photo",
         "video":"some video"
 
     },
 
     "Golden Gate" : {
-        "name":"Golden Gate",
+        "name": "Golden Gate",
 
         "upNeighbour":"Golden Gate Stairs",
         "downNeighbour":"Entrance",
         "leftNeighbour":null,
         "rightNeighbour":null,
+
+        "upVideo":null,
+        "downVideo":null,
+        "leftVideo":null,
+        "rightVideo":null,
         
-        "juice":"some juice",
+        "juice":"piu piu",
         "photo":"some photo",
         "video":"some video"
     },
@@ -29,10 +39,15 @@ export default {
     "Golden Gate Stairs" : {
         "name":"Golden Gate Stairs",
 
-        "upNeighbour":"RF ouse",
+        "upNeighbour":"RF House",
         "downNeighbour":"Golden Gate",
         "leftNeighbour":"E Block",
         "rightNeighbour":"Bridge",
+
+        "upVideo":null,
+        "downVideo":null,
+        "leftVideo":null,
+        "rightVideo":null,
         
         "juice":"some juice",
         "photo":"some photo",
@@ -46,6 +61,11 @@ export default {
         "downNeighbour":"Golden Gate Stairs",
         "leftNeighbour":null,
         "rightNeighbour":"D Block",
+
+        "upVideo":null,
+        "downVideo":null,
+        "leftVideo":null,
+        "rightVideo":null,
         
         "juice":"some juice",
         "photo":"some photo",
@@ -59,6 +79,11 @@ export default {
         "downNeighbour":"Golden Gate Stairs",
         "leftNeighbour":"B Block",
         "rightNeighbour":"A Block",
+
+        "upVideo":null,
+        "downVideo":null,
+        "leftVideo":null,
+        "rightVideo":null,
         
         "juice":"some juice",
         "photo":"some photo",
@@ -72,6 +97,11 @@ export default {
         "downNeighbour":"Golden Gate Stairs",
         "leftNeighbour":"E Block",
         "rightNeighbour":"B Block",
+
+        "upVideo":null,
+        "downVideo":null,
+        "leftVideo":null,
+        "rightVideo":null,
         
         "juice":"some juice",
         "photo":"some photo",
