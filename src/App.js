@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Introduction from './components/Introduction'
 import Tour from './components/Tour'
 import backdrop from "./background.jpg"
+import Test from "./Test"
 
 // defines a theme as the global style to use for the entire page
 const theme = {
@@ -42,6 +43,7 @@ function App() {
           <Introduction />
           <Tour />
           <Footer />
+          <Test />
       </Grommet>
     </Box>
   );
