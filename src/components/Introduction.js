@@ -4,9 +4,15 @@ import { Main, Heading, Box } from 'grommet';
 class Sample extends React.Component{
     constructor(props) {
         super(props);
+
+        this.sayHello = this.sayHello.bind(this);
         
         this.state = {
         };
+    }
+
+    sayHello(){
+        alert('hello');
     }
     
     render(){
