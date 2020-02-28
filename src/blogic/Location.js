@@ -1,3 +1,5 @@
+import LocationData from "./locationdata"
+
 export default class Location {
     /**
      * 
@@ -10,57 +12,37 @@ export default class Location {
      * @param {*} photo 
      * @param {*} video 
      */
-    constructor(name,upNeighbour,downNeighbour,leftNeighbour,rightNeighbour,
-        juice,photo,video){
-        this.name = name;
+    constructor(locationJSON){
+        this.name = locationJSON.name;
 
         // A location is aware of its four neighbours (for now)
-        this.upNeighbour = upNeighbour;
-        this.downNeighbour = downNeighbour;
-        this.leftNeighbour = leftNeighbour;
-        this.rightNeighbour = rightNeighbour;
+        this.upNeighbour = locationJSON.upNeighbour;
+        this.downNeighbour = locationJSON.downNeighbour;
+        this.leftNeighbour = locationJSON.leftNeighbour;
+        this.rightNeighbour = locationJSON.rightNeighbour;
 
         // Special attributes to the location
-        this.juice = juice;
-        this.photo = juice;
-        this.video = juice;
+        this.juice = locationJSON.juice;
+        this.photo = locationJSON.photo;
+        this.video = locationJSON.video;
     }
 
-    /**
-     * Returns boolean if a neighbour exists after executing a move
-     * @param {*} direction 
-     */
-    canMove (direction) {
+    getNeighbourName(direction){
         switch(direction){
             case "up":
-                return this.upNeighbour !== undefined; //potential bug:!= vs !==, undefined vs null
+                return this.upNeighbour;
             case "down":
-                return this.downNeighbour !== undefined;
+                return this.downNeighbour;
             case "left":
-                return this.leftNeighbour !== undefined;
+                return this.leftNeighbour;
             case "right":
-                return this.rightNeighbour !== undefined;
+                return this.rightNeighbour
             default:
-                return "error, invalid direction";    
+                throw("error")
         }
     }
 
-    /**
-     * Returns boolean if a neighbour exists after executing a move
-     * @param {*} direction 
-     */
-    move (direction) {
-        switch(direction){
-            case "up":
-                return this.upNeighbour 
-            case "down":
-                return this.downNeighbour
-            case "left":
-                return this.leftNeighbour 
-            case "right":
-                return this.rightNeighbour 
-            default:
-                return "error, invalid direction";    
-        }
+    getJuice(){
+        return "getJuice";
     }
 }

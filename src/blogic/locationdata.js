@@ -1,5 +1,4 @@
 export default {
-
     "Entrance" : {
         "name":"Entrance",
 
@@ -11,6 +10,7 @@ export default {
         "juice":"some juice",
         "photo":"some photo",
         "video":"some video"
+
     },
 
     "Golden Gate" : {
