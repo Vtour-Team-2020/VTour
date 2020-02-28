@@ -47,7 +47,7 @@ export default class Map {
                 }
             );
 
-            if (findResult == undefined ){
+            if (findResult === undefined ){
                 throw("Location is undefined")
             }else{
                 this.currentLocation = findResult
