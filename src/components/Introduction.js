@@ -5,9 +5,15 @@ import { Inspect } from 'grommet-icons';
 class Sample extends React.Component{
     constructor(props) {
         super(props);
+
+        this.sayHello = this.sayHello.bind(this);
         
         this.state = {
         };
+    }
+
+    sayHello(){
+        alert('hello');
     }
     
     render(){
@@ -23,7 +29,7 @@ class Sample extends React.Component{
             <Main>
             <Heading
                     alignSelf = "center"
-                    color = "white">
+                    color = "pink">
                 Welcome to Eusoff Virtual Tour
             </Heading>
 
@@ -40,7 +46,7 @@ class Sample extends React.Component{
             </Box>
 
             <Button
-            onClick={() => {}} 
+            onClick={this.sayHello} 
             active="true"
             alignSelf = "center"
             label = "Start Exploring!"
