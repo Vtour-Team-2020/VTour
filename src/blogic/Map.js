@@ -42,5 +42,6 @@ export default class Map {
                 return element.name == newLocationName;
             }
         );
+        console.log("User now moves to " + this.currentLocation.name)
     }
 }
