@@ -29,7 +29,7 @@ export default {
     "Golden Gate Stairs" : {
         "name":"Golden Gate Stairs",
 
-        "upNeighbour":"RF ouse",
+        "upNeighbour":"RF House",
         "downNeighbour":"Golden Gate",
         "leftNeighbour":"E Block",
         "rightNeighbour":"Bridge",

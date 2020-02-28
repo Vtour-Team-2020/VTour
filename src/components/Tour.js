@@ -4,12 +4,6 @@ import React from 'react';
 // import grommet to use their built-in component
 import { Box, Stack, Image } from 'grommet';
 
-// import Gifplyaer 
-import GifPlayer from 'react-gif-player'
-
-// import react delay
-import Delay from 'react-delay'
-
 // import sub components
 import InfoPanel from './toursubcomponents/InfoPanel'
 import TopActionBar from './toursubcomponents/TopActionBar'
@@ -18,19 +12,16 @@ import TopActionBar from './toursubcomponents/TopActionBar'
 import pic1 from './a.png'
 import pic2 from './b.jpg'
 
-// import gif 
-import gif from './AtoB.gif'
+// import biz loig
+import User from '../blogic/User'
+
 
 class Tour extends React.Component{
     constructor(props) {
         super(props);
         
         this.state = {
-            moveUp : false,
-            moveDown : false,
-            moveLeft : false,
-            moveRight : false,
-            renderGif : true
+            currentUser : new User()
         };
 
         // binding all these methods to the child components to access their state update
@@ -83,38 +74,22 @@ class Tour extends React.Component{
 
     getUpActionUpdate() {
         console.log("User moves up")
-        this.setState( function () {
-            return{
-                moveUp : true
-            }
-        })
+        this.state.currentUser.changeLocation("up");
     }
 
     getDownActionUpdate() {
         console.log("User moves down")
-        this.setState( function () {
-            return{
-                moveDown : true
-            }
-        })
+        this.state.currentUser.changeLocation("down");
     }
 
     getRightActionUpdate() {
         console.log("User moves right")
-        this.setState( function () {
-            return{
-                moveRight : true
-            }
-        })
+        this.state.currentUser.changeLocation("right");
     }
 
     getLeftActionUpdate() {
         console.log("User moves up")
-        this.setState( function () {
-            return{
-                moveLeft : true
-            }
-        })
+        this.state.currentUser.changeLocation("left");
     }
 
     gifRendering() {

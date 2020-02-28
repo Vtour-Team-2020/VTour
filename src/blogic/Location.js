@@ -38,8 +38,14 @@ export default class Location {
             case "right":
                 return this.rightNeighbour
             default:
-                throw("error")
+                throw("Input is not captured, please check user input")
         }
+    }
+
+    getAllNeighbours(){
+        console.log(
+            "up:"+this.upNeighbour + " down: " + this.downNeighbour + " left: " + this.leftNeighbour + " right: " + this.rightNeighbour
+        )
     }
 
     getJuice(){
