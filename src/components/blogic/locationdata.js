@@ -7,15 +7,21 @@ export default {
         "leftNeighbour":"Gym Door",
         "rightNeighbour":null,
 
+        "xpoint":0,
+        "ypoint":0,
+
         "upVideo":"atob",
         "downVideo":null,
         "leftVideo":"atoc",
         "rightVideo":null,
         
         "juice":"this is where Eusoffians start their journey",
-        "photo":"some photo",
-        "video":"some video"
-
+        "photo":{
+            "photo1":{
+                "photourl":null,
+                "photocaption":""
+            }
+        }
     },
 
     "Dance Studio" : {

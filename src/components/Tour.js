@@ -113,9 +113,10 @@ class Tour extends React.Component{
      */
     getUpActionUpdate() {
         console.log("User moves up")
+        let gif_file_path = ""
         if (this.state.currentUser.getTransitionGif("up") !== undefined){
-            // potential bug for mutating state directly
-            this.setState({gif: this.state.currentUser.getTransitionGif("up")});
+            gif_file_path = this.state.currentUser.getTransitionGif("up");
+            
         }
         this.state.currentUser.changeLocation("up");
 
@@ -124,27 +125,35 @@ class Tour extends React.Component{
         );
 
         this.setUserActive();
+        
+        if (gif_file_path){
+            this.setState({gif: gif_file_path});
+        }
     }
 
     getDownActionUpdate() {
         console.log("User moves down")
+        let gif_file_path = ""
         if (this.state.currentUser.getTransitionGif("down") !== undefined){
-            this.setState({gif: this.state.currentUser.getTransitionGif("down")});
+            gif_file_path = this.state.currentUser.getTransitionGif("down");
         }
         this.state.currentUser.changeLocation("down");
 
         this.updateLocationStates(
             this.state.currentUser.getLocationInfo()
         );
-        
 
         this.setUserActive();
+        if (gif_file_path){
+            this.setState({gif: gif_file_path});
+        }
     }
 
     getRightActionUpdate() {
         console.log("User moves right")
+        let gif_file_path = ""
         if (this.state.currentUser.getTransitionGif("right") !== undefined){
-            this.setState({gif: this.state.currentUser.getTransitionGif("right")});
+            gif_file_path = this.state.currentUser.getTransitionGif("right");
         }
 
         this.state.currentUser.changeLocation("right");
@@ -153,12 +162,17 @@ class Tour extends React.Component{
             this.state.currentUser.getLocationInfo()
         );
         this.setUserActive();
+
+        if (gif_file_path){
+            this.setState({gif: gif_file_path});
+        }
     }
 
     getLeftActionUpdate() {
         console.log("User moves left")
+        let gif_file_path = ""
         if (this.state.currentUser.getTransitionGif("left") !== undefined){
-            this.setState({gif: this.state.currentUser.getTransitionGif("left")});
+            gif_file_path = this.state.currentUser.getTransitionGif("left");
         }
 
         this.state.currentUser.changeLocation("left");
@@ -167,6 +181,10 @@ class Tour extends React.Component{
             this.state.currentUser.getLocationInfo()
         );
         this.setUserActive();
+        
+        if (gif_file_path){
+            this.setState({gif: gif_file_path});
+        }
     }
 
     /**
