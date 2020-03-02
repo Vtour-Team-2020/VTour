@@ -10,7 +10,7 @@ import TopActionBar from './toursubcomponents/TopActionBar'
 import MidSection from  "./toursubcomponents/MidSection"
 
 // import entrance pic
-import entrancePic from "../blogic/resource/images/entrance.png"
+import entrancePic from "./blogic/resource/images/entrance.png"
 
 // import biz loig
 import User from "./blogic/User"

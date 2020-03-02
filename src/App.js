@@ -5,7 +5,7 @@ import MyFooter from './components/MyFooter'
 import Introduction from './components/Introduction'
 import Tour from './components/Tour'
 
-import background from "./blogic/resource/images/backdrop.png"
+import background from "./components/blogic/resource/images/backdrop.png"
 
 // defines a theme as the global style to use for the entire page
 const theme = {
