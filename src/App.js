@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grommet, Box } from 'grommet';
 
 import MyFooter from './components/MyFooter'

@@ -13,8 +13,7 @@ import MidSection from  "./toursubcomponents/MidSection"
 import entrancePic from "../blogic/resource/images/entrance.png"
 
 // import biz loig
-import User from "../blogic/User"
-
+import User from "./blogic/User"
 
 class Tour extends React.Component{
     constructor(props) {
@@ -22,7 +21,7 @@ class Tour extends React.Component{
         
         this.state = {
             currentUser : new User(),
-
+            newUser : new User(),
             // this state becomes permenantly false if user starts moving
             userActive : false,
 
