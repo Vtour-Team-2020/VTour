@@ -42,7 +42,7 @@ export default class Location {
             case "right":
                 return this.rightNeighbour
             default:
-                throw("Input is not captured, please check user input")
+                return undefined;
         }
     }
 
@@ -75,7 +75,7 @@ export default class Location {
             case "right":
                 return this.rightVideo
             default:
-                throw("Input is not captured, please check user input")
+                return undefined;
         }        
     }
 }

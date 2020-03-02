@@ -1,7 +1,7 @@
 import React from 'react';
 import { Main, Heading, Box } from 'grommet';
 
-class Sample extends React.Component{
+class Introduction extends React.Component{
     constructor(props) {
         super(props);
 
@@ -21,7 +21,6 @@ class Sample extends React.Component{
         <Box 
             justify="center" 
             align="center" 
-            pad="medium"
             // height="small"
             width = "100%"
         >
@@ -40,4 +39,4 @@ class Sample extends React.Component{
     }
 }
 
-export default Sample;
+export default Introduction;

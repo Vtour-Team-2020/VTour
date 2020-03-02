@@ -19,7 +19,7 @@ class MyFooter extends React.Component{
         return(
             <Footer 
                 background="linear-gradient(102.77deg, #623AA1 -9.18%, #015351 209.09%)"
-                pad="medium"
+                pad="small"
             >
             <Text color="white">Copyright</Text>
             <Anchor color="white" label="About Hackers" />

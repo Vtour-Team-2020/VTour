@@ -1,4 +1,3 @@
-import React from "react"
 import AllLocations from "./locationdata"
 import Location from "./Location"
 
@@ -50,7 +49,7 @@ export default class Map {
             );
 
             if (findResult === undefined ){
-                throw("Location is undefined")
+                return undefined;
             }else{
                 this.currentLocation = findResult
                 console.log("User moves to this new location: " + this.currentLocation.name)
