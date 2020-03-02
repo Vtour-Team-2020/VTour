@@ -4,9 +4,15 @@ import { Main, Heading, Box } from 'grommet';
 class Sample extends React.Component{
     constructor(props) {
         super(props);
+
+        this.sayHello = this.sayHello.bind(this);
         
         this.state = {
         };
+    }
+
+    sayHello(){
+        alert('hello');
     }
     
     render(){
@@ -16,13 +22,17 @@ class Sample extends React.Component{
             justify="center" 
             align="center" 
             pad="medium"
-            height="small"   
+            // height="small"
+            width = "100%"
         >
             <Main>
             <Heading
                     alignSelf = "center"
+                    level = "1"
                     color = "white">
-                Welcome to <span style = {{ color : "yellow"}} >Eusoff</span> Virtual Tour
+                    <span style = {{ fontFamily : "Trebuchet MS"}}>
+                    <span style = {{ color : "yellow", fontStyle: "italic" }} >EUSOFF</span> Online
+                    </span>
             </Heading>
             </Main>
         </Box>
