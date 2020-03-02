@@ -2,7 +2,7 @@
 import React from 'react';
 
 // import grommet to use their built-in component
-import { Box, Stack, Image } from 'grommet';
+import { Box, Stack, Image, Video } from 'grommet';
 
 // import sub components
 import BottomActionBar from './toursubcomponents/BottomActionBar'
@@ -13,7 +13,7 @@ import MidSection from  "./toursubcomponents/MidSection"
 import entrancePic from "../blogic/resource/images/entrance.png"
 
 // import biz loig
-import User from '../blogic/User'
+import User from '../blogic/user.js'
 
 
 class Tour extends React.Component{
@@ -116,7 +116,7 @@ class Tour extends React.Component{
         console.log("User moves up")
         if (this.state.currentUser.getTransitionGif("up") !== undefined){
             // potential bug for mutating state directly
-            this.state.gif = this.state.currentUser.getTransitionGif("up")
+            this.setState({gif:this.state.currentUser.getTransitionGif("up")}); 
         }
         this.state.currentUser.changeLocation("up");
 
@@ -130,7 +130,7 @@ class Tour extends React.Component{
     getDownActionUpdate() {
         console.log("User moves down")
         if (this.state.currentUser.getTransitionGif("down") !== undefined){
-            this.state.gif = this.state.currentUser.getTransitionGif("down")
+            this.setState({gif:this.state.currentUser.getTransitionGif("down")});
         }
         this.state.currentUser.changeLocation("down");
 
@@ -145,7 +145,7 @@ class Tour extends React.Component{
     getRightActionUpdate() {
         console.log("User moves right")
         if (this.state.currentUser.getTransitionGif("right") !== undefined){
-            this.state.gif = this.state.currentUser.getTransitionGif("right")
+            this.setState({gif:this.state.currentUser.getTransitionGif("right")});
         }
 
         this.state.currentUser.changeLocation("right");
@@ -159,7 +159,7 @@ class Tour extends React.Component{
     getLeftActionUpdate() {
         console.log("User moves left")
         if (this.state.currentUser.getTransitionGif("left") !== undefined){
-            this.state.gif = this.state.currentUser.getTransitionGif("left")
+            this.setState({gif:this.state.currentUser.getTransitionGif("left")});
         }
 
         this.state.currentUser.changeLocation("left");
@@ -200,7 +200,7 @@ class Tour extends React.Component{
         } 
         // update state in tour.js
         this.setState(function(){
-           return{
+            return{
                topActionProps : {
                 canMoveUp : newUp,
                 canMoveDown : newDown,
@@ -211,7 +211,8 @@ class Tour extends React.Component{
             //    canMoveDown : newDown,
             //    canMoveRight : newRight,
             //    canMoveLeft : newLeft,
-           }
+            }
+           
         })
     }
 
@@ -228,7 +229,7 @@ class Tour extends React.Component{
     }
 
     gifRendering(gifkey) {
-    
+            console.log(gifkey);
             return(
                 <Box
                     direction="row"
@@ -238,11 +239,16 @@ class Tour extends React.Component{
                         gif={gifkey} // load gif  
                         autoplay={true} // enable auto play
                     /> */}
-                    <Image     
+                    <Video     
                         fit="contain"
-                        // fill={true}
-                        src={gifkey}
-                        />
+                        autoPlay={true}
+                        controls={false}
+                        muted={true}
+                        >
+                              <source key="video" src={gifkey} type="video/webm" />
+                        </Video>
+
+
                 </Box>
             )
     }
