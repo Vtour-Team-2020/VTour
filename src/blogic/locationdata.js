@@ -60,7 +60,7 @@ export default {
         "upNeighbour":null,
         "downNeighbour":"Gym Door",
         "leftNeighbour":null,
-        "rightNeighbour":"D Block",
+        "rightNeighbour":null,
 
         "upVideo":null,
         "downVideo":"dtoc",

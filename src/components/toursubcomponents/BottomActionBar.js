@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Layer } from 'grommet';
 import { Bar, Camera, CirclePlay, CircleQuestion } from 'grommet-icons';
 
-class InfoPanel extends React.Component{
+class BottomActionBar extends React.Component{
     constructor(props) {
         super(props);
         
@@ -22,49 +22,29 @@ class InfoPanel extends React.Component{
 
             // defines the direction of the central axis
             direction = "row"
-
-            // make it appear on top of its background
-            elevation = "small"
             
             // aligns itself (end - right side) with the immediate parent's central axis
-            alignSelf = "end"
+            alignSelf = "center"
 
             // dimension with respect to its parent component
-            width = "7%"
-            height = "40%"
+            width = "100%"
+            height = "9%"
 
             // giving the panel some space to breathe
             margin = {{
-                top:"8%",
-                bottom:"2%",
-                right:"2%"
+                bottom:"1%"
             }}
-            // border definition to eccentuate this component
-            border={{
-                "color": "border",
-                "size": "medium",
-                "style": "groove",
-                "side": "all"
-              }}
-
-            // background to make it stand out
-            background = {{
-                "color": "brand",
-                "opacity": "strong"
-            }}
-
-            // consistent rounded edges
-            round = "medium"
             >
 
             <Box
-                direction="column"
+                direction="row"
                 justify="center"
-                overflow = "scroll"
+                overflow = "hidden"
             >
-                <Box>
+                <Box
+                width="25%">
                 <Button
-                    icon={<CircleQuestion />}
+                    icon={<CircleQuestion color="brand"/>}
                     alignSelf = "center"
                     onClick={this.activateHelp}
                     />
@@ -82,19 +62,33 @@ class InfoPanel extends React.Component{
                 }
                 </Box>
 
+                <Box
+                    width="25%"
+                >
                 <Button
-                    icon={<Bar />}
+                    icon={<Bar color="brand"/>}
                     alignSelf = "center"
                     onClick={() => {}}
                     />
+                </Box>
+
+                <Box
+                    width="25%"
+                >
                 <Button
-                    icon={<Camera />}
+                    icon={<Camera color="brand"/>}
                     onClick={() => {}}
                 />
+                </Box>
+
+                <Box
+                    width="25%"
+                >
                 <Button
-                    icon={<CirclePlay />}
+                    icon={<CirclePlay color="brand"/>}
                     onClick={() => {}}
                 />
+                </Box>
             </Box>
         </Box>)
     }
@@ -113,4 +107,4 @@ class InfoPanel extends React.Component{
     }
 }
 
-export default InfoPanel;
+export default BottomActionBar;

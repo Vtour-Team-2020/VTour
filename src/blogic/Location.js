@@ -46,14 +46,18 @@ export default class Location {
         }
     }
 
-    getAllNeighbours(){
-        var neighbours = {
-            "upNeighbour" : this.upNeighbour,
-            "downNeighbour" : this.downNeighbour,
-            "leftNeighbour" : this.leftNeighbour,
-            "rightNeighbour" : this.rightNeighbour,
+    getLocationInfo(){
+        var LocationInfo = {
+            upNeighbour : this.upNeighbour,
+            downNeighbour : this.downNeighbour,
+            leftNeighbour : this.leftNeighbour,
+            rightNeighbour : this.rightNeighbour,
+
+            juice : this.juice,
+            photo : this.photo,
+            video : this.video,
         }
-        return neighbours
+        return LocationInfo
     }
 
     getJuice(){

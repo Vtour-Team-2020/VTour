@@ -64,9 +64,8 @@ export default class Map {
     /**
      * logs all accessible neighbours
      */
-    getAccesiblelocations(){
-        this.currentLocation.getAllNeighbours();
-        return;
+    getLocationInfo(){
+        return this.currentLocation.getLocationInfo();;
     }
 
     /**
@@ -77,14 +76,14 @@ export default class Map {
     }
 
     /**
-     * returns the transition gif when a user makes a location change
+     * returns the transition gif's url when a user makes a location change, returns
+     * undefined if the key is null 
      */
     getTransitionGif(direction){
         try{
-            
             let gif_key = this.currentLocation.getGifKey(direction)
+            
             let gif = mediaResource.transitiongifs[gif_key]
-            console.log(this.currentLocation)
             return gif;
         } catch(err) {
             console.log(err)

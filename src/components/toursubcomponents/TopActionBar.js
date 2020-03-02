@@ -12,7 +12,11 @@ class TopActionBar extends React.Component{
             moveDown : false,
             moveLeft : false,
             moveRight : false,
-            showHelp : false
+            showHelp : false,
+            
+            upButtonState : {
+
+            }
         };
 
         this.activateHelp = this.activateHelp.bind(this);
@@ -28,36 +32,19 @@ class TopActionBar extends React.Component{
             direction = "row"
 
             // make it appear on top of its background
-            elevation = "small"
+            // elevation = "small"
             
             // aligns itself (center) with the immediate parent's central axis
             alignSelf = "center"
 
             // dimension with respect to its parent component
-            width = "45%"
+            width = "100%"
             height = "9%"
 
             // some gap to breathe
             margin = {{
                 "top" : "1%"
             }}
-
-            // background to make it stand out
-            background = {{
-                "color": "brand",
-                "opacity": "strong"
-            }}
-                        
-            // border design
-            border = {{
-                "color": "border",
-                "size": "medium",
-                "style": "groove",
-                "side": "all"
-            }}
-
-            // set the edges to round
-            round = "medium"
             >
             <Box
                 align = "center"
@@ -71,31 +58,31 @@ class TopActionBar extends React.Component{
                     width="20%"
                     height="100%"
                 >
-                    <Button icon={<CaretUp />}  onClick={this.props.getUpActionUpdate}></Button>
+                    <Button icon={<CaretUp color="brand"/>}  onClick={this.props.getUpActionUpdate}></Button>
                 </Box>
                 <Box
                     width="20%"
                     height="100%"
                 >
-                    <Button icon={<CaretDown />} onClick={this.props.getDownActionUpdate}></Button>
+                    <Button icon={<CaretDown color="brand"/>} onClick={this.props.getDownActionUpdate}></Button>
                 </Box>
                 <Box
                     width="20%"
                     height="100%"
                 >
-                    <Button icon={<CaretPrevious /> } onClick={this.props.getLeftActionUpdate}></Button>
+                    <Button icon={<CaretPrevious color="brand"/> } onClick={this.props.getLeftActionUpdate}></Button>
                 </Box>
                 <Box
                     width="20%"
                     height="100%"
                 >
-                    <Button icon={<CaretNext /> } onClick={this.props.getRightActionUpdate}></Button>
+                    <Button icon={<CaretNext color="brand"/> } onClick={this.props.getRightActionUpdate}></Button>
                 </Box>
                 <Box
                     width="20%"
                     height="100%"
                 >
-                    <Button icon={<CircleQuestion /> } onClick={this.activateHelp}></Button>
+                    <Button icon={<CircleQuestion color="brand"/> } onClick={this.activateHelp}></Button>
                     { this.state.showHelp &&
                         <Layer
                         onEsc={() => this.deactivateHelp()}
@@ -126,6 +113,10 @@ class TopActionBar extends React.Component{
                 showHelp : false
             };
         });        
+    }
+
+    bindButtonStyles(){
+
     }
 }
 

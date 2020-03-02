@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Grommet, Box } from 'grommet';
 
-import Footer from './components/Footer'
+import MyFooter from './components/MyFooter'
 import Introduction from './components/Introduction'
 import Tour from './components/Tour'
 
-import background from "./backdrop.png"
+import background from "./blogic/resource/images/backdrop.png"
 
 // defines a theme as the global style to use for the entire page
 const theme = {
@@ -41,10 +41,9 @@ function App() {
     >
       <Grommet theme={theme} full>
           <Introduction />
-          <Tour />
-          <Footer />
-          {/* <Test /> */}
+          <Tour />  
       </Grommet>
+    <MyFooter />
     </Box>
   );
 }

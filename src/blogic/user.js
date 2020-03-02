@@ -23,8 +23,8 @@ export default class User {
     /**
      * logs the accessible locations in console
      */
-    getAccesiblelocations(){
-        return this.map.getAccesiblelocations();
+    getLocationInfo(){
+        return this.map.getLocationInfo();
     }
     
     /**

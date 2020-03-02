@@ -22,14 +22,17 @@ class Sample extends React.Component{
             justify="center" 
             align="center" 
             pad="medium"
-            height="small"   
+            // height="small"
+            width = "100%"
         >
             <Main>
             <Heading
                     alignSelf = "center"
                     level = "1"
-                    color = "#A5A5A5">
-                Welcome to <span style = {{ color : "yellow" }} >Eusoff</span> Virtual Tour
+                    color = "white">
+                    <span style = {{ fontFamily : "Trebuchet MS"}}>
+                    <span style = {{ color : "yellow", fontStyle: "italic" }} >EUSOFF</span> Online
+                    </span>
             </Heading>
             </Main>
         </Box>
