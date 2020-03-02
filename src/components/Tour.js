@@ -115,7 +115,7 @@ class Tour extends React.Component{
         console.log("User moves up")
         if (this.state.currentUser.getTransitionGif("up") !== undefined){
             // potential bug for mutating state directly
-            this.state.gif = this.state.currentUser.getTransitionGif("up")
+            this.setState({gif: this.state.currentUser.getTransitionGif("up")});
         }
         this.state.currentUser.changeLocation("up");
 
@@ -129,7 +129,7 @@ class Tour extends React.Component{
     getDownActionUpdate() {
         console.log("User moves down")
         if (this.state.currentUser.getTransitionGif("down") !== undefined){
-            this.state.gif = this.state.currentUser.getTransitionGif("down")
+            this.setState({gif: this.state.currentUser.getTransitionGif("down")});
         }
         this.state.currentUser.changeLocation("down");
 
@@ -144,7 +144,7 @@ class Tour extends React.Component{
     getRightActionUpdate() {
         console.log("User moves right")
         if (this.state.currentUser.getTransitionGif("right") !== undefined){
-            this.state.gif = this.state.currentUser.getTransitionGif("right")
+            this.setState({gif: this.state.currentUser.getTransitionGif("right")});
         }
 
         this.state.currentUser.changeLocation("right");
@@ -158,7 +158,7 @@ class Tour extends React.Component{
     getLeftActionUpdate() {
         console.log("User moves left")
         if (this.state.currentUser.getTransitionGif("left") !== undefined){
-            this.state.gif = this.state.currentUser.getTransitionGif("left")
+            this.setState({gif: this.state.currentUser.getTransitionGif("left")});
         }
 
         this.state.currentUser.changeLocation("left");
