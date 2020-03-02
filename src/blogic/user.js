@@ -13,10 +13,27 @@ export default class User {
      */
     changeLocation(direction){
         console.log("direction input from user is " + direction)
-        this.map.move(direction);
+        try {
+            this.map.move(direction)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
-    //
+    /**
+     * logs the accessible locations in console
+     */
+    getLocationInfo(){
+        return this.map.getLocationInfo();
+    }
+    
+    /**
+     *  get transition gif
+     */
+    getTransitionGif(direction){
+        return this.map.getTransitionGif(direction);
+    }
+
     getJuice(){ 
         return this.map.getCurrentLocation().getJuice();
     }
@@ -27,5 +44,9 @@ export default class User {
 
     getVideos(){
         console.log("get videos")
+    }
+
+    getEntranceImage(){
+        return this.map.getEntranceImage()
     }
 }

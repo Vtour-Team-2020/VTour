@@ -16,9 +16,6 @@ class Test extends React.Component{
     
     render(){
         return(<Box>
-            {console.log(this.state.CurrentUser.getJuice())}
-            {this.state.CurrentUser.changeLocation("up")}
-            {console.log(this.state.CurrentUser.getJuice())}
         </Box>)
     }
 }

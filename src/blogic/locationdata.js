@@ -2,14 +2,14 @@ export default {
     "Entrance" : {
         "name":"Entrance",
 
-        "upNeighbour": "Golden Gate",
+        "upNeighbour": "Dance Studio",
         "downNeighbour":null,
-        "leftNeighbour":null,
+        "leftNeighbour":"Gym Door",
         "rightNeighbour":null,
 
-        "upVideo":null,
+        "upVideo":"atob",
         "downVideo":null,
-        "leftVideo":null,
+        "leftVideo":"atoc",
         "rightVideo":null,
         
         "juice":"this is where Eusoffians start their journey",
@@ -18,16 +18,16 @@ export default {
 
     },
 
-    "Golden Gate" : {
-        "name": "Golden Gate",
+    "Dance Studio" : {
+        "name": "Dance Studio",
 
-        "upNeighbour":"Golden Gate Stairs",
+        "upNeighbour":null,
         "downNeighbour":"Entrance",
         "leftNeighbour":null,
         "rightNeighbour":null,
 
         "upVideo":null,
-        "downVideo":null,
+        "downVideo":"btoa",
         "leftVideo":null,
         "rightVideo":null,
         
@@ -36,33 +36,15 @@ export default {
         "video":"some video"
     },
 
-    "Golden Gate Stairs" : {
-        "name":"Golden Gate Stairs",
+    "Gym Door" : {
+        "name":"Gym Door",
 
-        "upNeighbour":"RF House",
-        "downNeighbour":"Golden Gate",
-        "leftNeighbour":"E Block",
-        "rightNeighbour":"Bridge",
-
-        "upVideo":null,
-        "downVideo":null,
-        "leftVideo":null,
-        "rightVideo":null,
-        
-        "juice":"some juice",
-        "photo":"some photo",
-        "video":"some video"
-    },
-
-    "E Block" : {
-        "name":"E Block",
-
-        "upNeighbour":null,
-        "downNeighbour":"Golden Gate Stairs",
+        "upNeighbour":"Gym",
+        "downNeighbour":"Entrance",
         "leftNeighbour":null,
-        "rightNeighbour":"D Block",
+        "rightNeighbour":null,
 
-        "upVideo":null,
+        "upVideo":"ctod",
         "downVideo":null,
         "leftVideo":null,
         "rightVideo":null,
@@ -72,34 +54,16 @@ export default {
         "video":"some video"
     },
 
-    "Bridge" : {
-        "name":"Bridge",
+    "Gym" : {
+        "name":"Gym",
 
         "upNeighbour":null,
-        "downNeighbour":"Golden Gate Stairs",
-        "leftNeighbour":"B Block",
-        "rightNeighbour":"A Block",
+        "downNeighbour":"Gym Door",
+        "leftNeighbour":null,
+        "rightNeighbour":null,
 
         "upVideo":null,
-        "downVideo":null,
-        "leftVideo":null,
-        "rightVideo":null,
-        
-        "juice":"some juice",
-        "photo":"some photo",
-        "video":"some video"
-    },
-
-    "RF House" : {
-        "name":"RF House",
-
-        "upNeighbour":null,
-        "downNeighbour":"Golden Gate Stairs",
-        "leftNeighbour":"E Block",
-        "rightNeighbour":"B Block",
-
-        "upVideo":null,
-        "downVideo":null,
+        "downVideo":"dtoc",
         "leftVideo":null,
         "rightVideo":null,
         
