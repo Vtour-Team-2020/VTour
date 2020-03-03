@@ -19,6 +19,7 @@ class Introduction extends React.Component{
 
         const Component =         
         <Box 
+            direction="column"
             justify="center" 
             align="center" 
             // height="small"
@@ -26,7 +27,6 @@ class Introduction extends React.Component{
         >
             <Main>
             <Heading
-                    alignSelf = "center"
                     level = "1"
                     color = "white">
                     <span style = {{ fontFamily : "Trebuchet MS"}}>

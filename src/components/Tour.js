@@ -58,17 +58,21 @@ class Tour extends React.Component {
   }
 
   render() {
+    let canUp = this.state.canMoveUp;
+
     let component = (
       <Media
         queries={{
-            smallphones: "(max-width: 731px) and (max-height: 373px)",
-            regularPhones: "(min-width: 731px) and (min-height: 374px) and (max-height: 600px)",
-            large: "(min-width: 731px) and (min-height: 700px)"
+          smallphones: "(max-height: 373px)",
+          regularPhones: "(min-height: 374px) and (max-height: 600px)",
+          large:
+            "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
+          desktop: "(min-width: 1026px) and (min-height: 769px)"
         }}
       >
         {matches => (
           <Fragment>
-            {// Fragment 2 for most phones out there
+            {// Fragment 1 for small phones
             matches.smallphones && (
               // the entire view box
               <Box
@@ -89,7 +93,7 @@ class Tour extends React.Component {
                   getLeftActionUpdate={this.getLeftActionUpdate}
                   getRightActionUpdate={this.getRightActionUpdate}
                 />
-                
+
                 <Box
                   width="430px"
                   height="241px"
@@ -134,10 +138,11 @@ class Tour extends React.Component {
                   getDownActionUpdate={this.getDownActionUpdate}
                   getLeftActionUpdate={this.getLeftActionUpdate}
                   getRightActionUpdate={this.getRightActionUpdate}
+                  canMoveUp={this.state}
                 />
                 <Box
-                  width="625px"
-                  height="350px"
+                  width="550px"
+                  height="310px"
                   justify="center"
                   align="center"
                 >
@@ -162,8 +167,56 @@ class Tour extends React.Component {
               </Box>
             )}
 
-            {//fragment 2 for bigger screens
+            {//fragment  for bigger screens
             matches.large && (
+              // the entire view box
+              <Box
+                direction="row"
+                justify="center"
+                align="center"
+                width="100%"
+                margin={{
+                  left: "0px",
+                  right: "0px",
+                  top: "5%",
+                  bottom: "5%"
+                }}
+              >
+                <LeftActionBar
+                  getUpActionUpdate={this.getUpActionUpdate}
+                  getDownActionUpdate={this.getDownActionUpdate}
+                  getLeftActionUpdate={this.getLeftActionUpdate}
+                  getRightActionUpdate={this.getRightActionUpdate}
+                />
+                <Box
+                  width="900px"
+                  height="505px"
+                  justify="center"
+                  align="center"
+                >
+                  {console.log(this.state.topActionProps)}
+                  {!this.state.userActive && (
+                    <Box justify="center">
+                      <Image
+                        fit="contain"
+                        // fill={true}
+                        src={test}
+                      />
+                    </Box>
+                  )}
+
+                  {this.state.userActive && this.gifRendering(this.state.gif)}
+                  {console.log(this.state.gifkey)}
+                </Box>
+                {/* Passing down the parent's getActionUpdate as a prop to be called in the
+                            child component, it then changes the state in the parent component */}
+
+                <RightActionBar />
+              </Box>
+            )}
+
+            {//fragment  for bigger screens
+            matches.desktop && (
               // the entire view box
               <Box
                 direction="row"
@@ -193,7 +246,7 @@ class Tour extends React.Component {
                   {!this.state.userActive && (
                     <Box justify="center">
                       <Image
-                        fit="fill"
+                        fit="contain"
                         // fill={true}
                         src={test}
                       />
@@ -204,7 +257,7 @@ class Tour extends React.Component {
                   {console.log(this.state.gifkey)}
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
-                            child component, it then changes the state in the parent component */}
+                              child component, it then changes the state in the parent component */}
 
                 <RightActionBar />
               </Box>

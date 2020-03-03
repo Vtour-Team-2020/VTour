@@ -23,12 +23,18 @@ class LeftActionBar extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+    // this.setState({
+    //     moveUp : this.props.accessibleDirections.canMoveup
+    // })
     return (
       <Media
         queries={{
-            smallphones: "(max-width: 731px) and (max-height: 373px)",
-            regularPhones: "(min-width: 731px) and (min-height: 374px) and (max-height: 600px)",
-            large: "(min-width: 731px) and (min-height: 700px)"
+          smallphones: "(max-height: 373px)",
+          regularPhones: "(min-height: 374px) and (max-height: 600px)",
+          large:
+            "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
+          desktop: "(min-width: 1026px) and (min-height: 769px)"
         }}
       >
         {matches => (
@@ -71,7 +77,7 @@ class LeftActionBar extends React.Component {
                 direction="column"
                 alignSelf="center"
                 justify="center"
-                height="350px"
+                height="310px"
                 background={{
                   color: "dark-1"
                 }}
@@ -98,6 +104,38 @@ class LeftActionBar extends React.Component {
             )}
 
             {matches.large && (
+              <Box
+                justify="center"
+                direction="column"
+                alignSelf="center"
+                justify="center"
+                height="505px"
+                background={{
+                  color: "dark-1"
+                }}
+              >
+                <Box align="center" direction="column">
+                  <Button
+                    icon={<CaretUp color="brand" />}
+                    onClick={this.props.getUpActionUpdate}
+                  ></Button>
+                  <Button
+                    icon={<CaretDown color="brand" />}
+                    onClick={this.props.getDownActionUpdate}
+                  ></Button>
+                  <Button
+                    icon={<CaretPrevious color="brand" />}
+                    onClick={this.props.getLeftActionUpdate}
+                  ></Button>
+                  <Button
+                    icon={<CaretNext color="brand" />}
+                    onClick={this.props.getRightActionUpdate}
+                  ></Button>
+                </Box>
+              </Box>
+            )}
+
+            {matches.desktop && (
               <Box
                 justify="center"
                 direction="column"

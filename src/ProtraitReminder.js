@@ -20,24 +20,23 @@ class ProtraitReminder extends React.Component{
         const Component =         
         <Box 
             direction="column"
-            justify="center" 
+            justify="left" 
             align="center" 
             margin={{
-                left:"5%",
-                right:"5%"
+                top: "30%"
             }}
-            width = "90%"
+            width = "100%"
         >
-            <Heading
-                    alignSelf = "center"
-                    justify = "center"
-                    align = "center"
-                    level = "5"
-                    color = "white">
-                    <span style = {{ fontFamily : "Trebuchet MS"}}>
-                    switch to landscape mode for better experience
-                    </span>
-            </Heading>
+            <Box
+                align="center"
+            >
+                    <h3 style = {{ fontFamily : "Trebuchet MS"}}>
+                    Switch to landscape mode
+                    </h3>
+                    <h3 style = {{ fontFamily : "Trebuchet MS"}}>
+                    for better experience
+                    </h3>
+            </Box>
         </Box>
         return (Component)
     }
