@@ -2,23 +2,35 @@ import React, { Fragment } from "react";
 
 import Media from "react-media";
 import { Box, Button, Layer, Text, Image, List } from "grommet";
-import { Camera, CircleQuestion, FormClose } from "grommet-icons";
+import { Info, FormClose, Projects, Waypoint } from "grommet-icons";
 
 import test from "../blogic/resource/images/backdrop.png";
+import mediaResource from "../blogic/mediaResource";
 
 class RightActionBar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showHelp: false,
-      showImage: false
+      showLocationDetail: false,
+      showImage: false,
+      showEvent: false,
+      showMap: false
     };
 
     this.activateHelp = this.activateHelp.bind(this);
     this.deactivateHelp = this.deactivateHelp.bind(this);
+
     this.activateImage = this.activateImage.bind(this);
     this.deactivateHelp = this.deactivateHelp.bind(this);
+
+    this.activateEvent = this.activateEvent.bind(this);
+    this.deactivateEvent = this.deactivateEvent.bind(this);
+
+    this.activateMap = this.activateMap.bind(this);
+    this.deactivateMap = this.deactivateMap.bind(this);
+
+    this.jump = this.jump.bind(this);
   }
 
   render() {
@@ -30,6 +42,10 @@ class RightActionBar extends React.Component {
       },
       { url: test, caption: "caption 2" }
     ];
+
+    const MapList = mediaResource.mapList;
+
+    console.log(MapList);
 
     return (
       <Media
@@ -43,146 +59,139 @@ class RightActionBar extends React.Component {
       >
         {matches => (
           <Fragment>
-            {" "}
-            {/* For iphones and other mobile devices*/}
-            {matches.smallphones && (
-              <Box
-                justify="center"
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="240px"
-                elevation="small"
-                background={{
-                  color: "dark-1"
-                }}
-              >
+            {matches.smallphones &&
+              (this.props.onRightBar ? (
                 <Box
-                  align="center"
+                  justify="center"
                   direction="column"
-                  overflow={{ vertical: "scroll" }}
+                  alignSelf="center"
+                  justify="center"
+                  height="240px"
+                  elevation="small"
+                  background={{
+                    color: "dark-1"
+                  }}
                 >
-                  <Button
-                    icon={<CircleQuestion color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateHelp}
-                  />
-                  {this.state.showHelp && (
-                    <Layer
-                      onEsc={() => this.deactivateHelp()}
-                      onClickOutside={() => this.deactivateHelp()}
-                      position="bottom"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "medium", horizontal: "small" }}
-                    >
-                      <Box
-                        height="25px"
-                        width="400px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
+                  <Box
+                    align="center"
+                    direction="column"
+                    overflow={{ vertical: "scroll" }}
+                  >
+                    <Button
+                      icon={<Info color="brand" />}
+                      alignSelf="center"
+                      onClick={this.activateHelp}
+                    />
+                    {this.state.showLocationDetail && (
+                      <Layer
+                        onEsc={() => this.deactivateHelp()}
+                        onClickOutside={() => this.deactivateHelp()}
+                        position="bottom"
+                        modal={true}
+                        responsive={false}
+                        margin={{ vertical: "medium", horizontal: "small" }}
                       >
                         <Box
-                          alignSelf="center"
+                          height="25px"
+                          width="400px"
                           direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
+                          gap="small"
+                          align="center"
+                          background="dark-3"
                         >
-                          <Text size="small">Juice</Text>
+                          <Box
+                            alignSelf="center"
+                            direction="row"
+                            pad={{
+                              left: "10px"
+                            }}
+                            width="90%"
+                            justify="start"
+                          >
+                            <Text size="small">Juice</Text>
+                          </Box>
+                          <Button
+                            direction="row"
+                            alignSelf="center"
+                            width="10%"
+                            justify="center"
+                            icon={<FormClose size="medium" />}
+                            onClick={() => this.deactivateHelp()}
+                          />
                         </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateHelp()}
-                        />
-                      </Box>
-                      <Box
-                        height="70px"
-                        width="400px"
-                        align="center"
-                        direction="column"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="start" direction="row">
-                          <Text>
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                          </Text>
+                        <Box
+                          height="70px"
+                          width="400px"
+                          align="center"
+                          direction="column"
+                          justify="between"
+                          round="medium"
+                          elevation="medium"
+                          pad={{ horizontal: "small" }}
+                          overflow={{ vertical: "scroll" }}
+                        >
+                          <Box align="start" direction="row">
+                            <Text></Text>
+                          </Box>
                         </Box>
-                      </Box>
-                    </Layer>
-                  )}
-                  <Button
-                    icon={<Camera color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateImage}
-                  />
-                  {this.state.showImage && (
-                    <Layer
-                      onEsc={() => this.deactivateImage()}
-                      onClickOutside={() => this.deactivateImage()}
-                      position="bottom"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "medium", horizontal: "small" }}
-                    >
-                      <Box
-                        height="25px"
-                        width="450px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
+                      </Layer>
+                    )}
+
+                    <Button
+                      icon={<Waypoint color="brand" />}
+                      alignSelf="center"
+                      onClick={this.activateMap}
+                    />
+                    {this.state.showMap && (
+                      <Layer
+                        onEsc={() => this.deactivateMap()}
+                        onClickOutside={() => this.deactivateMap()}
+                        position="bottom"
+                        modal={true}
+                        responsive={false}
+                        margin={{ vertical: "medium", horizontal: "small" }}
                       >
                         <Box
-                          alignSelf="center"
+                          height="25px"
+                          width="450px"
                           direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
+                          gap="small"
+                          align="center"
+                          background="dark-3"
                         >
-                          <Text size="small">Snap</Text>
+                          <Box
+                            alignSelf="center"
+                            direction="row"
+                            pad={{
+                              left: "10px"
+                            }}
+                            width="90%"
+                            justify="start"
+                          >
+                            <Text size="small">Jump to a location</Text>
+                          </Box>
+                          <Button
+                            direction="row"
+                            alignSelf="center"
+                            width="10%"
+                            justify="center"
+                            icon={<FormClose size="medium" />}
+                            onClick={() => this.deactivateMap()}
+                          />
                         </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateImage()}
-                        />
-                      </Box>
-                      <Box
-                        height="270px"
-                        width="450px"
-                        align="center"
-                        direction="column"
-                        gap="small"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ vertical: "xsmall", horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="center" direction="column" gap="small">
-                          <List data={TestList}>
+                        <Box
+                          height="270px"
+                          width="450px"
+                          align="center"
+                          direction="column"
+                          gap="small"
+                          justify="between"
+                          round="medium"
+                          elevation="medium"
+                          pad={{ vertical: "xsmall", horizontal: "small" }}
+                          overflow={{ vertical: "scroll" }}
+                        >
+                          <List data={MapList}>
                             {(datum, index) => (
                               <Box
                                 key={index}
@@ -194,321 +203,94 @@ class RightActionBar extends React.Component {
                                   // width="370px"
                                   height="170px"
                                 >
-                                  <Image src={datum.url} fit="contain" />
+                                  <Image src={datum.Image} fit="contain" />
                                 </Box>
-                                <Box width="340px">
-                                  <Text weight="bold">{datum.caption}</Text>
-                                </Box>
-                              </Box>
-                            )}
-                          </List>
-                        </Box>
-                      </Box>
-                    </Layer>
-                  )}
-                </Box>
-              </Box>
-            )}
-            {matches.regularPhones && (
-              <Box
-                justify="center"
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="310px"
-                elevation="small"
-                background={{
-                  color: "dark-1"
-                }}
-              >
-                <Box
-                  align="center"
-                  direction="column"
-                  overflow={{ vertical: "scroll" }}
-                >
-                  <Button
-                    icon={<CircleQuestion color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateHelp}
-                  />
-                  {this.state.showHelp && (
-                    <Layer
-                      onEsc={() => this.deactivateHelp()}
-                      onClickOutside={() => this.deactivateHelp()}
-                      position="bottom"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "medium", horizontal: "small" }}
-                    >
-                      <Box
-                        height="30px"
-                        width="500px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
-                      >
-                        <Box
-                          alignSelf="center"
-                          direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
-                        >
-                          <Text size="small">Juice</Text>
-                        </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateHelp()}
-                        />
-                      </Box>
-                      <Box
-                        height="80px"
-                        width="500px"
-                        align="center"
-                        direction="column"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="start" direction="row">
-                          <Text>
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                          </Text>
-                        </Box>
-                      </Box>
-                    </Layer>
-                  )}
-                  <Button
-                    icon={<Camera color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateImage}
-                  />
-                  {this.state.showImage && (
-                    <Layer
-                      onEsc={() => this.deactivateImage()}
-                      onClickOutside={() => this.deactivateImage()}
-                      position="bottom"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "medium", horizontal: "small" }}
-                    >
-                      <Box
-                        height="25px"
-                        width="610px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
-                      >
-                        <Box
-                          alignSelf="center"
-                          direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
-                        >
-                          <Text size="small">Snap</Text>
-                        </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateImage()}
-                        />
-                      </Box>
-                      <Box
-                        height="320px"
-                        width="610px"
-                        align="center"
-                        direction="column"
-                        gap="small"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ vertical: "xsmall", horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="center" direction="column" gap="small">
-                          <List data={TestList}>
-                            {(datum, index) => (
-                              <Box
-                                key={index}
-                                direction="column"
-                                pad="medium"
-                                align="center"
-                              >
-                                <Box height="210px">
-                                  <Image src={datum.url} fit="contain" />
-                                </Box>
-                                <Box width="500px">
-                                  <Text weight="bold">{datum.caption}</Text>
+                                <Box
+                                  width="340px"
+                                  justify="center"
+                                  align="center"
+                                  margin="xsmall"
+                                >
+                                  <Button
+                                    icon={<Waypoint size="medium" />}
+                                    label={
+                                      <Text weight="bold">
+                                        {"Jump to " + datum.Name}
+                                      </Text>
+                                    }
+                                    onClick={() => this.jump(datum.Name)}
+                                  ></Button>
                                 </Box>
                               </Box>
                             )}
                           </List>
                         </Box>
-                      </Box>
-                    </Layer>
-                  )}
-                </Box>
-              </Box>
-            )}
-            {matches.large && (
-              <Box
-                justify="center"
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="505px"
-                elevation="small"
-                background={{
-                  color: "dark-1"
-                }}
-              >
-                <Box
-                  align="center"
-                  direction="column"
-                  overflow={{ vertical: "scroll" }}
-                >
-                  <Button
-                    icon={<CircleQuestion color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateHelp}
-                  />
-                  {this.state.showHelp && (
-                    <Layer
-                      onEsc={() => this.deactivateHelp()}
-                      onClickOutside={() => this.deactivateHelp()}
-                      position="bottom"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "large" }}
-                    >
-                      <Box
-                        height="40px"
-                        width="780px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
-                      >
-                        <Box
-                          alignSelf="center"
-                          direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
-                        >
-                          <Text size="small">Juice</Text>
-                        </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateHelp()}
-                        />
-                      </Box>
-                      <Box
-                        height="100px"
-                        width="780px"
-                        align="center"
-                        direction="column"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="start" direction="row">
-                          <Text>
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                          </Text>
-                        </Box>
-                      </Box>
-                    </Layer>
-                  )}
-                  <Button
-                    icon={<Camera color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateImage}
-                  />
-                  {this.state.showImage && (
-                    <Layer
-                      onEsc={() => this.deactivateImage()}
-                      onClickOutside={() => this.deactivateImage()}
-                      position="center"
-                      modal={true}
-                      responsive={false}
-                    >
-                      <Box
-                        height="25px"
-                        width="900px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
-                      >
-                        <Box
-                          alignSelf="center"
-                          direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
-                          gap="small"
-                        >
-                          <Text size="small">Snap</Text>
-                        </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateImage()}
-                        />
-                      </Box>
+                      </Layer>
+                    )}
 
-                      <Box
-                        height="540px"
-                        width="900px"
-                        align="center"
-                        direction="column"
-                        gap="small"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ vertical: "xsmall", horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
+                    {this.props.hasEvent ? (
+                      <Button
+                        icon={<Projects color="brand" />}
+                        alignSelf="center"
+                        onClick={this.activateEvent}
+                      />
+                    ) : (
+                      <Button
+                        icon={<Projects color="dark-3" />}
+                        alignSelf="center"
+                      />
+                    )}
+
+                    {this.state.showEvent && (
+                      <Layer
+                        onEsc={() => this.deactivateEvent()}
+                        onClickOutside={() => this.deactivateEvent()}
+                        position="bottom"
+                        modal={true}
+                        responsive={false}
+                        margin={{ vertical: "medium", horizontal: "small" }}
                       >
-                        <Box align="center" direction="column" gap="small">
-                          <List data={TestList}>
+                        <Box
+                          height="25px"
+                          width="450px"
+                          direction="row"
+                          gap="small"
+                          align="center"
+                          background="dark-3"
+                        >
+                          <Box
+                            alignSelf="center"
+                            direction="row"
+                            pad={{
+                              left: "10px"
+                            }}
+                            width="90%"
+                            justify="start"
+                          >
+                            <Text size="small">Events at this place</Text>
+                          </Box>
+                          <Button
+                            direction="row"
+                            alignSelf="center"
+                            width="10%"
+                            justify="center"
+                            icon={<FormClose size="medium" />}
+                            onClick={() => this.deactivateEvent()}
+                          />
+                        </Box>
+                        <Box
+                          height="270px"
+                          width="450px"
+                          align="center"
+                          direction="column"
+                          gap="small"
+                          justify="between"
+                          round="medium"
+                          elevation="medium"
+                          pad={{ vertical: "xsmall", horizontal: "small" }}
+                          overflow={{ vertical: "scroll" }}
+                        >
+                          <List data={this.props.eventList}>
                             {(datum, index) => (
                               <Box
                                 key={index}
@@ -516,183 +298,51 @@ class RightActionBar extends React.Component {
                                 pad="medium"
                                 align="center"
                               >
-                                <Box height="400px">
-                                  <Image src={datum.url} fit="contain" />
+                                <Box
+                                  // width="370px"
+                                  height="170px"
+                                >
+                                  <Image src={datum.Image} fit="contain" />
                                 </Box>
-                                <Box width="780">
-                                  <Text weight="bold">{datum.caption}</Text>
+                                <Box
+                                  width="340px"
+                                  justify="center"
+                                  align="center"
+                                  margin="xsmall"
+                                >
+                                  <Text weight="bold">{datum.Caption}</Text>
                                 </Box>
                               </Box>
                             )}
                           </List>
                         </Box>
-                      </Box>
-                    </Layer>
-                  )}
+                      </Layer>
+                    )}
+                  </Box>
                 </Box>
-              </Box>
-            )}
-            {matches.desktop && (
-              <Box
-                justify="center"
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="618px"
-                elevation="small"
-                background={{
-                  color: "dark-1"
-                }}
-              >
+              ) : (
                 <Box
-                  align="center"
+                  justify="center"
                   direction="column"
-                  overflow={{ vertical: "scroll" }}
+                  alignSelf="center"
+                  justify="center"
+                  height="240px"
+                  elevation="small"
+                  background={{
+                    color: "dark-1"
+                  }}
                 >
-                  <Button
-                    icon={<CircleQuestion color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateHelp}
-                  />
-                  {this.state.showHelp && (
-                    <Layer
-                      onEsc={() => this.deactivateHelp()}
-                      onClickOutside={() => this.deactivateHelp()}
-                      position="center"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "medium", horizontal: "small" }}
-                    >
-                      <Box
-                        height="30px"
-                        width="500px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
-                      >
-                        <Box
-                          alignSelf="center"
-                          direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
-                        >
-                          <Text size="small">Juice</Text>
-                        </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateHelp()}
-                        />
-                      </Box>
-                      <Box
-                        height="80px"
-                        width="500px"
-                        align="center"
-                        direction="column"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="start" direction="row">
-                          <Text>
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                            Some nice juice supplied by JCRC like monica baey
-                          </Text>
-                        </Box>
-                      </Box>
-                    </Layer>
-                  )}
-                  <Button
-                    icon={<Camera color="brand" />}
-                    alignSelf="center"
-                    onClick={this.activateImage}
-                  />
-                  {this.state.showImage && (
-                    <Layer
-                      onEsc={() => this.deactivateImage()}
-                      onClickOutside={() => this.deactivateImage()}
-                      position="bottom"
-                      modal={true}
-                      responsive={false}
-                      margin={{ vertical: "medium", horizontal: "small" }}
-                    >
-                      <Box
-                        height="25px"
-                        width="1000px"
-                        direction="row"
-                        gap="small"
-                        align="center"
-                        background="dark-3"
-                      >
-                        <Box
-                          alignSelf="center"
-                          direction="row"
-                          pad={{
-                            left: "10px"
-                          }}
-                          width="90%"
-                          justify="start"
-                        >
-                          <Text size="small">Snap</Text>
-                        </Box>
-                        <Button
-                          direction="row"
-                          alignSelf="center"
-                          width="10%"
-                          justify="center"
-                          icon={<FormClose size="medium" />}
-                          onClick={() => this.deactivateImage()}
-                        />
-                      </Box>
-                      <Box
-                        height="618px"
-                        width="1000px"
-                        align="center"
-                        direction="column"
-                        gap="small"
-                        justify="between"
-                        round="medium"
-                        elevation="medium"
-                        pad={{ vertical: "xsmall", horizontal: "small" }}
-                        overflow={{ vertical: "scroll" }}
-                      >
-                        <Box align="center" direction="column" gap="small">
-                          <List data={TestList}>
-                            {(datum, index) => (
-                              <Box
-                                key={index}
-                                direction="column"
-                                pad="medium"
-                                align="center"
-                              >
-                                <Box height="450px" margin={{ bottom : "medium"}}>
-                                  <Image src={datum.url} fit="contain" />
-                                </Box>
-                                <Box width="700px">
-                                  <Text weight="bold">{datum.caption}</Text>
-                                </Box>
-                              </Box>
-                            )}
-                          </List>
-                        </Box>
-                      </Box>
-                    </Layer>
-                  )}
+                  <Box
+                    align="center"
+                    direction="column"
+                    overflow={{ vertical: "scroll" }}
+                  >
+                    <Button icon={<Info color="dark-3" />} alignSelf="center" />
+                    <Button icon={<Waypoint color="dark-3" />} alignSelf="center" />
+                    <Button icon={<Projects color="dark-3" />} alignSelf="center" />
+                  </Box>
                 </Box>
-              </Box>
-            )}
+              ))}
           </Fragment>
         )}
       </Media>
@@ -701,14 +351,14 @@ class RightActionBar extends React.Component {
   activateHelp() {
     this.setState(function() {
       return {
-        showHelp: true
+        showLocationDetail: true
       };
     });
   }
 
   deactivateHelp() {
     this.setState({
-      showHelp: false
+      showLocationDetail: false
     });
   }
 
@@ -724,6 +374,27 @@ class RightActionBar extends React.Component {
     this.setState({
       showImage: false
     });
+  }
+
+  activateEvent() {
+    this.setState({ showEvent: true });
+  }
+
+  deactivateEvent() {
+    this.setState({ showEvent: false });
+  }
+
+  activateMap() {
+    this.setState({ showMap: true });
+  }
+
+  deactivateMap() {
+    this.setState({ showMap: false });
+  }
+
+  jump(location) {
+    this.deactivateMap();
+    this.props.getJumpLocationUpdate(location);
   }
 }
 

@@ -10,7 +10,7 @@ export default class Location {
      * @param {*} photo 
      * @param {*} video 
      */
-    constructor(locationJSON){
+    constructor(locationJSON, Eventlist){
         this.name = locationJSON.name;
 
         // A location is aware of its four neighbours (for now)
@@ -29,6 +29,11 @@ export default class Location {
         this.juice = locationJSON.juice;
         this.photo = locationJSON.photo;
         this.video = locationJSON.video;
+
+        this.locationPic = locationJSON.locationPic;
+
+        this.eventList = []
+        this.eventList = Eventlist;
     }
 
     getNeighbourName(direction){
@@ -77,5 +82,14 @@ export default class Location {
             default:
                 return undefined;
         }        
+    }
+
+    getLocationPic(){
+        return this.locationPic;
+    }
+
+    getEventList(){
+        console.log("location.js" + this.eventList)
+        return this.eventList
     }
 }

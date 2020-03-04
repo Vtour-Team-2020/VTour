@@ -21,6 +21,17 @@ export default class User {
     }
 
     /**
+     * 
+     */
+    quickMove(locationName){
+        this.map.quickMove(locationName)
+    }
+
+    hasLocation(locationName){
+        return (this.map.hasLocation(locationName))
+    }
+
+    /**
      * logs the accessible locations in console
      */
     getLocationInfo(){
@@ -48,5 +59,13 @@ export default class User {
 
     getEntranceImage(){
         return this.map.getEntranceImage()
+    }
+
+    getCurrentLocationPic(){
+        return this.map.getCurrentLocationPic()
+    }
+
+    getCurrentLocationEvents(){
+        return this.map.getCurrentLocationEvents()
     }
 }

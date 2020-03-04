@@ -10,16 +10,21 @@ export default class Map {
         this.locationArray = [];
         this.entrancePic = Media.entrance
 
+        this.eventLists = mediaResource.eventLists
+        console.log(this.eventLists)
+
         this.currentLocation = "";
         for( var key in AllLocations ){
             if (AllLocations.hasOwnProperty(key)){
                 // construct location object
-                let newLocation = new Location(AllLocations[key])
-                // bind Entrance to newLocation
-                if (newLocation.name === "Entrance"){
+                let newLocation = new Location(AllLocations[key], this.eventLists[key])
+
+                if (newLocation.name === "Golden Gate"){
                     this.currentLocation = newLocation;
                 }
                 this.locationArray.push(newLocation);
+
+                console.log(newLocation)
             }
         }
     }
@@ -60,6 +65,32 @@ export default class Map {
         }
     }
 
+    quickMove(locationName){
+        // find in array if such location exists
+        var findResult = this.locationArray.find(
+            function(element){
+                return element.name === locationName;
+            }
+        );
+
+        console.log("jump to" + findResult.name)
+        this.currentLocation = findResult
+        return;
+    }
+
+    hasLocation(locationName){
+        var findResult = this.locationArray.find(
+            function(element){
+                return element.name === locationName;
+            }
+        );
+        if (findResult === undefined ){
+            return(false)
+        }else{
+            return(true)
+        }
+    }
+
     /**
      * logs all accessible neighbours
      */
@@ -86,6 +117,26 @@ export default class Map {
             return gif;
         } catch(err) {
             console.log(err)
+        }
+    }
+
+    getCurrentLocationPic(){
+        try{
+            let pic_key = this.currentLocation.getLocationPic()
+            
+            let pic = mediaResource.images[pic_key]
+            return pic;
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    getCurrentLocationEvents(){
+        console.log(this.currentLocation.getEventList())
+        if (this.currentLocation.getEventList() !== undefined){
+            return this.currentLocation.getEventList();
+        }else{
+            return undefined;
         }
     }
 }

@@ -25,7 +25,6 @@ const theme = {
 };
 
 function App() {
-  console.log(background);
   return (
     // potentially bad practice by not utilising theme variable to set overall background
     <DeviceOrientation lockOrientation={"landscape"}>
