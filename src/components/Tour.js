@@ -4,9 +4,6 @@ import React, { Fragment } from "react";
 // import grommet to use their built-in component
 import { Box, Image } from "grommet";
 
-// import Delay
-import Delay from "react-delay";
-
 //import Media
 import Media from "react-media";
 
@@ -50,8 +47,10 @@ class Tour extends React.Component {
 
       jumped: false,
 
-      eventList : undefined,
-      hasEvent : false
+      eventList: undefined,
+      hasEvent: false,
+
+      Juice: ""
     };
 
     // binding all these methods to the child components to access their state update
@@ -73,233 +72,191 @@ class Tour extends React.Component {
     this.turnOffRightBar = this.turnOffRightBar.bind(this);
 
     //
-    this.getJumpLocationUpdate = this.getJumpLocationUpdate.bind(this)
+    this.getJumpLocationUpdate = this.getJumpLocationUpdate.bind(this);
   }
 
   render() {
-    console.log("thisplace" + this.state.hasEvent)
-    console.log("thisplace" + this.state.eventList)
-
     let component = (
-        <Media
-          queries={{
-            smallphones: "(max-height: 373px)",
-            regularPhones: "(min-height: 374px) and (max-height: 600px)",
-            large:
-              "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
-            desktop: "(min-width: 1026px) and (min-height: 769px)"
-          }}
-        >
-          {matches => (
-            <Fragment>
-              {// Fragment 1 for small phones
-              matches.smallphones && (
-                // the entire view box
+      <Media
+        queries={{
+          smallphones: "(max-height: 373px)",
+          regularPhones: "(min-height: 374px) and (max-height: 600px)",
+          large:
+            "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
+          desktop: "(min-width: 1026px) and (min-height: 769px)"
+        }}
+      >
+        {matches => (
+          <Fragment>
+            {// Fragment 1 for small phones
+            matches.smallphones && (
+              // the entire view box
+              <Box
+                direction="row"
+                justify="center"
+                align="center"
+                width="100%"
+                margin={{
+                  left: "0px",
+                  right: "0px",
+                  top: "5%",
+                  bottom: "5%"
+                }}
+              >
+                <LeftActionBar
+                  getUpActionUpdate={this.getUpActionUpdate}
+                  getDownActionUpdate={this.getDownActionUpdate}
+                  getLeftActionUpdate={this.getLeftActionUpdate}
+                  getRightActionUpdate={this.getRightActionUpdate}
+                  onLeftBar={this.state.onLeftBar}
+                  canMoveUp={this.state.canMoveUp}
+                  canMoveDown={this.state.canMoveDown}
+                  canMoveLeft={this.state.canMoveLeft}
+                  canMoveRight={this.state.canMoveRight}
+                />
+
                 <Box
-                  direction="row"
+                  width="430px"
+                  height="241px"
                   justify="center"
                   align="center"
-                  width="100%"
-                  margin={{
-                    left: "0px",
-                    right: "0px",
-                    top: "5%",
-                    bottom: "5%"
-                  }}
                 >
-                  <LeftActionBar
-                    getUpActionUpdate={this.getUpActionUpdate}
-                    getDownActionUpdate={this.getDownActionUpdate}
-                    getLeftActionUpdate={this.getLeftActionUpdate}
-                    getRightActionUpdate={this.getRightActionUpdate}
-                    onLeftBar={this.state.onLeftBar}
-                    canMoveUp={this.state.canMoveUp}
-                    canMoveDown={this.state.canMoveDown}
-                    canMoveLeft={this.state.canMoveLeft}
-                    canMoveRight={this.state.canMoveRight}
-                  />
-
-                  <Box
-                    width="430px"
-                    height="241px"
-                    justify="center"
-                    align="center"
-                  >
-                    {console.log(this.state.topActionProps)}
-                    {!this.state.userActive && (
-                      <Box justify="center">
-                        <Image fit="contain" src={entrancePic} />
-                      </Box>
-                    )}
-                    {this.state.userActive && this.picRendering(this.state.mainPic)}
-                  </Box>
-                  <RightActionBar 
-                    getJumpLocationUpdate={this.getJumpLocationUpdate}
-                    eventList={this.state.eventList}
-                    hasEvent={this.state.hasEvent}
-                    onRightBar={this.state.onRightBar}
-                  />
+                  {!this.state.userActive && (
+                    <Box justify="center">
+                      <Image fit="contain" src={entrancePic} />
+                    </Box>
+                  )}
+                  {this.state.userActive &&
+                    this.picRendering(this.state.mainPic)}
                 </Box>
-              )}
+                <RightActionBar
+                  getJumpLocationUpdate={this.getJumpLocationUpdate}
+                  eventList={this.state.eventList}
+                  hasEvent={this.state.hasEvent}
+                  onRightBar={this.state.onRightBar}
+                  juice={this.state.juice}
+                />
+              </Box>
+            )}
 
-              {// Fragment 2 for most phones out there
-              matches.regularPhones && (
-                // the entire view box
+            {// Fragment 2 for most phones out there
+            matches.regularPhones && (
+              // the entire view box
+              <Box
+                direction="row"
+                justify="center"
+                align="center"
+                width="100%"
+                margin={{
+                  left: "0px",
+                  right: "0px",
+                  top: "5%",
+                  bottom: "5%"
+                }}
+              >
+                <LeftActionBar
+                  getUpActionUpdate={this.getUpActionUpdate}
+                  getDownActionUpdate={this.getDownActionUpdate}
+                  getLeftActionUpdate={this.getLeftActionUpdate}
+                  getRightActionUpdate={this.getRightActionUpdate}
+                  onLeftBar={this.state.onLeftBar}
+                  canMoveUp={this.state.canMoveUp}
+                  canMoveDown={this.state.canMoveDown}
+                  canMoveLeft={this.state.canMoveLeft}
+                  canMoveRight={this.state.canMoveRight}
+                />
                 <Box
-                  direction="row"
+                  width="550px"
+                  height="310px"
                   justify="center"
                   align="center"
-                  width="100%"
-                  margin={{
-                    left: "0px",
-                    right: "0px",
-                    top: "5%",
-                    bottom: "5%"
-                  }}
                 >
-                  <LeftActionBar
-                    getUpActionUpdate={this.getUpActionUpdate}
-                    getDownActionUpdate={this.getDownActionUpdate}
-                    getLeftActionUpdate={this.getLeftActionUpdate}
-                    getRightActionUpdate={this.getRightActionUpdate}
-                    onLeftBar={this.state.onLeftBar}
-                    canMoveUp={this.state.canMoveUp}
-                    canMoveDown={this.state.canMoveDown}
-                    canMoveLeft={this.state.canMoveLeft}
-                    canMoveRight={this.state.canMoveRight}
-                  />
-                  <Box
-                    width="550px"
-                    height="310px"
-                    justify="center"
-                    align="center"
-                  >
-                    {console.log(this.state.topActionProps)}
-                    {!this.state.userActive && (
-                      <Box justify="center">
-                        <Image
-                          fit="contain"
-                          // fill={true}
-                          src={entrance}
-                        />
-                      </Box>
-                    )}
+                  {!this.state.userActive && (
+                    <Box justify="center">
+                      <Image
+                        fit="contain"
+                        // fill={true}
+                        src={entrance}
+                      />
+                    </Box>
+                  )}
 
-                    {this.state.userActive && this.picRendering(this.state.mainPic)}
-                  </Box>
-                  {/* Passing down the parent's getActionUpdate as a prop to be called in the
+                  {this.state.userActive &&
+                    this.picRendering(this.state.mainPic)}
+                </Box>
+                {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
 
-                  <RightActionBar />
-                </Box>
-              )}
+                <RightActionBar
+                  getJumpLocationUpdate={this.getJumpLocationUpdate}
+                  eventList={this.state.eventList}
+                  hasEvent={this.state.hasEvent}
+                  onRightBar={this.state.onRightBar}
+                  juice={this.state.juice}
+                />
+              </Box>
+            )}
 
-              {//fragment  for bigger screens
-              matches.large && (
-                // the entire view box
+            {//fragment  for bigger screens
+            (matches.large || matches.desktop) && (
+              // the entire view box
+              <Box
+                direction="row"
+                justify="center"
+                align="center"
+                width="100%"
+                margin={{
+                  left: "0px",
+                  right: "0px",
+                  top: "5%",
+                  bottom: "5%"
+                }}
+              >
+                <LeftActionBar
+                  getUpActionUpdate={this.getUpActionUpdate}
+                  getDownActionUpdate={this.getDownActionUpdate}
+                  getLeftActionUpdate={this.getLeftActionUpdate}
+                  getRightActionUpdate={this.getRightActionUpdate}
+                  onLeftBar={this.state.onLeftBar}
+                  canMoveUp={this.state.canMoveUp}
+                  canMoveDown={this.state.canMoveDown}
+                  canMoveLeft={this.state.canMoveLeft}
+                  canMoveRight={this.state.canMoveRight}
+                />
                 <Box
-                  direction="row"
+                  width="806px"
+                  height="454px"
                   justify="center"
                   align="center"
-                  width="100%"
-                  margin={{
-                    left: "0px",
-                    right: "0px",
-                    top: "5%",
-                    bottom: "5%"
-                  }}
                 >
-                  <LeftActionBar
-                    getUpActionUpdate={this.getUpActionUpdate}
-                    getDownActionUpdate={this.getDownActionUpdate}
-                    getLeftActionUpdate={this.getLeftActionUpdate}
-                    getRightActionUpdate={this.getRightActionUpdate}
-                    onLeftBar={this.state.onLeftBar}
-                    canMoveUp={this.state.canMoveUp}
-                    canMoveDown={this.state.canMoveDown}
-                    canMoveLeft={this.state.canMoveLeft}
-                    canMoveRight={this.state.canMoveRight}
-                  />
-                  <Box
-                    width="900px"
-                    height="505px"
-                    justify="center"
-                    align="center"
-                  >
-                    {console.log(this.state.topActionProps)}
-                    {!this.state.userActive && (
-                      <Box justify="center">
-                        <Image
-                          // fit="cover"
-                          fill={true}
-                          src={entrance}
-                        />
-                      </Box>
-                    )}
+                  {!this.state.userActive && (
+                    <Box justify="center">
+                      <Image
+                        // fit="cover"
+                        fill={true}
+                        src={{entrance}}
+                      />
+                    </Box>
+                  )}
 
-                    {this.state.userActive && this.picRendering(this.state.mainPic)}
-                  </Box>
-                  {/* Passing down the parent's getActionUpdate as a prop to be called in the
+                  {this.state.userActive &&
+                    this.picRendering(this.state.mainPic)}
+                </Box>
+                {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
 
-                  <RightActionBar />
-                </Box>
-              )}
-
-              {//fragment  for bigger screens
-              matches.desktop && (
-                // the entire view box
-                <Box
-                  direction="row"
-                  justify="center"
-                  align="center"
-                  width="100%"
-                  margin={{
-                    left: "0px",
-                    right: "0px",
-                    top: "5%",
-                    bottom: "5%"
-                  }}
-                >
-                  <LeftActionBar
-                    getUpActionUpdate={this.getUpActionUpdate}
-                    getDownActionUpdate={this.getDownActionUpdate}
-                    getLeftActionUpdate={this.getLeftActionUpdate}
-                    getRightActionUpdate={this.getRightActionUpdate}
-                    onLeftBar={this.state.onLeftBar}
-                    canMoveUp={this.state.canMoveUp}
-                    canMoveDown={this.state.canMoveDown}
-                    canMoveLeft={this.state.canMoveLeft}
-                    canMoveRight={this.state.canMoveRight}
-                  />
-                  <Box
-                    width="1100px"
-                    height="618px"
-                    justify="center"
-                    align="center"
-                  >
-                    {console.log(this.state.topActionProps)}
-                    {!this.state.userActive && (
-                      <Box justify="center">
-                        <Image
-                          fit="cover"
-                          // fill={true}
-                          src={entrance}
-                        />
-                      </Box>
-                    )}
-
-                    {this.state.userActive && this.picRendering(this.state.mainPic)}
-                  </Box>
-                  {/* Passing down the parent's getActionUpdate as a prop to be called in the
-                              child component, it then changes the state in the parent component */}
-
-                  <RightActionBar />
-                </Box>
-              )}
-            </Fragment>
-          )}
-        </Media>
+                <RightActionBar
+                  getJumpLocationUpdate={this.getJumpLocationUpdate}
+                  eventList={this.state.eventList}
+                  hasEvent={this.state.hasEvent}
+                  onRightBar={this.state.onRightBar}
+                  juice={this.state.juice}
+                />
+              </Box>
+            )}
+          </Fragment>
+        )}
+      </Media>
     );
 
     return component;
@@ -313,7 +270,6 @@ class Tour extends React.Component {
    *  4. update relevant states [this.updateLocationStates]
    */
   getUpActionUpdate() {
-    console.log("User moves up");
     let mainPic_file_path = "";
     if (this.state.currentUser.getTransitionGif("up") !== undefined) {
       mainPic_file_path = this.state.currentUser.getTransitionGif("up");
@@ -334,7 +290,6 @@ class Tour extends React.Component {
   }
 
   getDownActionUpdate() {
-    console.log("User moves down");
     let mainPic_file_path = "";
     if (this.state.currentUser.getTransitionGif("down") !== undefined) {
       mainPic_file_path = this.state.currentUser.getTransitionGif("down");
@@ -355,7 +310,6 @@ class Tour extends React.Component {
   }
 
   getRightActionUpdate() {
-    console.log("User moves right");
     let mainPic_file_path = "";
     if (this.state.currentUser.getTransitionGif("right") !== undefined) {
       mainPic_file_path = this.state.currentUser.getTransitionGif("right");
@@ -376,7 +330,6 @@ class Tour extends React.Component {
   }
 
   getLeftActionUpdate() {
-    console.log("User moves left");
     let mainPic_file_path = "";
     if (this.state.currentUser.getTransitionGif("left") !== undefined) {
       mainPic_file_path = this.state.currentUser.getTransitionGif("left");
@@ -397,23 +350,22 @@ class Tour extends React.Component {
   }
 
   /**
-   * 
-   * @param {Location name in string} locationName 
+   *
+   * @param {Location name in string} locationName
    */
-  getJumpLocationUpdate(locationName){
-
+  getJumpLocationUpdate(locationName) {
     this.setState({
-      jumped : true
-    })
+      jumped: true
+    });
 
     if (this.state.currentUser.hasLocation(locationName)) {
-      this.state.currentUser.quickMove(locationName)
-    }else{
-      console.log("location invalid")
+      this.state.currentUser.quickMove(locationName);
+    } else {
+      console.log("location invalid");
     }
 
-    console.log("user jumped to" + locationName)
-    
+    console.log("user jumped to " + locationName);
+
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
 
     this.setUserActive();
@@ -421,9 +373,8 @@ class Tour extends React.Component {
     var stoppic = this.state.currentUser.getCurrentLocationPic();
 
     if (stoppic) {
-      this.setState({ mainPic: stoppic, jumped : false});
+      this.setState({ mainPic: stoppic, jumped: false });
     }
- 
   }
 
   /**
@@ -432,8 +383,9 @@ class Tour extends React.Component {
    * @param {Location info json} locationInfo
    */
   updateLocationStates(locationInfo) {
-    console.log(locationInfo);
     var newUp, newDown, newLeft, newRight;
+
+    // Direction update
     if (locationInfo.upNeighbour === null) {
       newUp = false;
     } else {
@@ -454,15 +406,21 @@ class Tour extends React.Component {
     } else {
       newRight = true;
     }
-    if (this.state.currentUser.getCurrentLocationEvents() !== undefined){
+
+    // Juice Update
+    this.setState({
+      juice : this.state.currentUser.getJuice()
+    })
+    // Event state update
+    if (this.state.currentUser.getCurrentLocationEvents() !== undefined) {
       this.setState({
-        eventList : this.state.currentUser.getCurrentLocationEvents(),
-        hasEvent : true
-      })
-    }else{
-        this.setState({
-          hasEvent : false
-        }) 
+        eventList: this.state.currentUser.getCurrentLocationEvents(),
+        hasEvent: true
+      });
+    } else {
+      this.setState({
+        hasEvent: false
+      });
     }
 
     // update state in tour.js
@@ -517,31 +475,31 @@ class Tour extends React.Component {
   }
 
   componentDidMount() {
-    console.log("tour did mount");
+    console.log(this.state.currentUser.getLocationInfo())
+    this.updateLocationStates(
+      this.state.currentUser.getLocationInfo()
+    )
   }
-
   //delay implemented here
   componentDidUpdate() {
-    console.log("tour updated")
-    console.log("jumped "+this.state.jumped)
-    if (this.state.onLeftBar === false ){
-      console.log()
+    console.log(this.state.currentUser.getLocationInfo())
+    if (this.state.onLeftBar === false) {
       setTimeout(
         function() {
           this.setState(function() {
-            var stoppic = this.state.currentUser.getCurrentLocationPic()
+            var stoppic = this.state.currentUser.getCurrentLocationPic();
             if (stoppic !== null) {
               return {
-                onLeftBar : true,
-                onRightBar : true,
-                mainPic : stoppic
-              }
+                onLeftBar: true,
+                onRightBar: true,
+                mainPic: stoppic
+              };
             }
             return {
-              onRightBar : true,
+              onRightBar: true,
               onLeftBar: true
-            }
-            });
+            };
+          });
         }.bind(this),
         3000
       );

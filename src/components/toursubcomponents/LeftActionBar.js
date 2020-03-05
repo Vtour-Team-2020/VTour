@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Box, Button, Layer } from "grommet";
+import { Box, Button } from "grommet";
 import { CaretUp, CaretDown, CaretNext, CaretPrevious } from "grommet-icons";
 
 import Media from "react-media";
@@ -13,9 +13,7 @@ class LeftActionBar extends React.Component {
       moveDown: false,
       moveLeft: false,
       moveRight: false,
-      showHelp: false,
-
-      upButtonState: {}
+      showHelp: false
     };
 
     this.activateHelp = this.activateHelp.bind(this);
@@ -23,10 +21,7 @@ class LeftActionBar extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    // this.setState({
-    //     moveUp : this.props.accessibleDirections.canMoveup
-    // })
+
     return (
       <Media
         queries={{
@@ -41,7 +36,6 @@ class LeftActionBar extends React.Component {
           <Fragment>
             {matches.smallphones && (
               <Box
-                justify="center"
                 direction="column"
                 alignSelf="center"
                 justify="center"
@@ -99,7 +93,6 @@ class LeftActionBar extends React.Component {
             )}
             {matches.regularPhones && (
               <Box
-                justify="center"
                 direction="column"
                 alignSelf="center"
                 justify="center"
@@ -155,71 +148,12 @@ class LeftActionBar extends React.Component {
                 )}
               </Box>
             )}
-            {matches.large && (
+            {(matches.large || matches.desktop) && (
               <Box
-                justify="center"
                 direction="column"
                 alignSelf="center"
                 justify="center"
-                height="505px"
-                background={{
-                  color: "dark-1"
-                }}
-              >
-                {this.props.onLeftBar && (
-                  <Box align="center" direction="column">
-                    {this.props.canMoveUp ? (
-                      <Button
-                        icon={<CaretUp color="brand" />}
-                        onClick={this.props.getUpActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretUp color="dark-3" />}></Button>
-                    )}
-                    {this.props.canMoveDown ? (
-                      <Button
-                        icon={<CaretDown color="brand" />}
-                        onClick={this.props.getDownActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretDown color="dark-3" />}></Button>
-                    )}
-
-                    {this.props.canMoveLeft ? (
-                      <Button
-                        icon={<CaretPrevious color="brand" />}
-                        onClick={this.props.getLeftActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretPrevious color="dark-3" />}></Button>
-                    )}
-                    {this.props.canMoveRight ? (
-                      <Button
-                        icon={<CaretNext color="brand" />}
-                        onClick={this.props.getRightActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretNext color="dark-3" />}></Button>
-                    )}
-                  </Box>
-                )}
-                {!this.props.onLeftBar && (
-                  <Box align="center" direction="column">
-                    <Button icon={<CaretUp color="dark-3" />}></Button>
-                    <Button icon={<CaretDown color="dark-3" />}></Button>
-                    <Button icon={<CaretPrevious color="dark-3" />}></Button>
-                    <Button icon={<CaretNext color="dark-3" />}></Button>
-                  </Box>
-                )}
-              </Box>
-            )}
-            {matches.desktop && (
-              <Box
-                justify="center"
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="618px"
+                height="454px"
                 background={{
                   color: "dark-1"
                 }}
@@ -291,16 +225,6 @@ class LeftActionBar extends React.Component {
         showHelp: false
       };
     });
-  }
-
-  bindButtonStyles() {}
-
-  componentDidMount() {
-    console.log("left did mount");
-  }
-
-  componentDidUpdate() {
-    console.log("left updated");
   }
 }
 

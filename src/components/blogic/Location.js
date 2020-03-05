@@ -58,9 +58,7 @@ export default class Location {
             leftNeighbour : this.leftNeighbour,
             rightNeighbour : this.rightNeighbour,
 
-            juice : this.juice,
-            photo : this.photo,
-            video : this.video,
+            juice : this.juice
         }
         return LocationInfo
     }
@@ -89,7 +87,6 @@ export default class Location {
     }
 
     getEventList(){
-        console.log("location.js" + this.eventList)
         return this.eventList
     }
 }

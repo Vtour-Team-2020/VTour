@@ -86,43 +86,58 @@ export default {
   mapList: [
     {
       Image: HO,
-      Name: "Hall Office"
+      Name: "Hall Office",
+      Key: "HO"
     },
     {
-      Image: GG,
-      Name: "Golden Gate"
-    },
-    {
-      Image: BAN,
-      Name: "RF Banner"
+      Image: "GS", // *!* 
+      Name: "Golden Gate Stairs",
+      Key: "GS"
     },
     {
       Image: APAN,
-      Name: "A Pantry"
+      Name: "A Pantry",
+      Key: "APAN"
     },
     {
       Image: BL,
-      Name: "B Lounge"
+      Name: "B Lounge",
+      Key: "BL"
     },
     {
       Image: DH,
-      Name: "DH"
+      Name: "DH",
+      Key: "DH"
     },
     {
       Image: DS,
-      Name: "Dance Studio"
+      Name: "Dance Studio",
+      Key: "DS"
     },
     {
       Image: FH,
-      Name: "FH"
+      Name: "Function Hall",
+      Key: "FH"
     },
     {
       Image: GYM,
-      Name: "Gym"
+      Name: "Gym",
+      Key: "GYM"
     },
     {
       Image: MPC,
-      Name: "MPC"
+      Name: "MPC",
+      Key: "MPC"
+    },
+    {
+      Image: "ABB", // *!*
+      Name: "A/B Bridge",
+      Key: "ABB"
+    },
+    {
+      Image: "B1", // *!*
+      Name: "Main Bridge",
+      Key: "B1"
     }
   ],
 

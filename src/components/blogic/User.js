@@ -46,19 +46,7 @@ export default class User {
     }
 
     getJuice(){ 
-        return this.map.getCurrentLocation().getJuice();
-    }
-
-    getPhotos(){
-        console.log("get photos")
-    }
-
-    getVideos(){
-        console.log("get videos")
-    }
-
-    getEntranceImage(){
-        return this.map.getEntranceImage()
+        return this.map.getCurrentLocationJuice();
     }
 
     getCurrentLocationPic(){

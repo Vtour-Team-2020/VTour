@@ -1,5 +1,6 @@
 import React from 'react';
-import { Main, Heading, Box } from 'grommet';
+import { Box } from 'grommet';
+import { Alert } from 'grommet-icons'
 
 class ProtraitReminder extends React.Component{
     constructor(props) {
@@ -29,7 +30,8 @@ class ProtraitReminder extends React.Component{
         >
             <Box
                 align="center"
-            >
+            >   
+                    <Alert color="brand"></Alert>
                     <h3 style = {{ fontFamily : "Trebuchet MS"}}>
                     Switch to landscape mode
                     </h3>

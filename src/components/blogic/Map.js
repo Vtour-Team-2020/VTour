@@ -3,6 +3,7 @@ import Location from "./Location"
 
 import Media from "./mediaResource"
 import mediaResource from "./mediaResource";
+import TestAllLocations from "./ActualLocationData"
 
 export default class Map {
     constructor(){
@@ -11,20 +12,21 @@ export default class Map {
         this.entrancePic = Media.entrance
 
         this.eventLists = mediaResource.eventLists
-        console.log(this.eventLists)
+        
+        // testMedResource = AllLocations
+
+        var locations = TestAllLocations
 
         this.currentLocation = "";
-        for( var key in AllLocations ){
-            if (AllLocations.hasOwnProperty(key)){
+        for( var key in locations ){
+            if (locations.hasOwnProperty(key)){
                 // construct location object
-                let newLocation = new Location(AllLocations[key], this.eventLists[key])
+                let newLocation = new Location(locations[key], this.eventLists[key])
 
-                if (newLocation.name === "Golden Gate"){
+                if (newLocation.name === "Golden Gate" || newLocation.name === "HO"){
                     this.currentLocation = newLocation;
                 }
                 this.locationArray.push(newLocation);
-
-                console.log(newLocation)
             }
         }
     }
@@ -72,8 +74,6 @@ export default class Map {
                 return element.name === locationName;
             }
         );
-
-        console.log("jump to" + findResult.name)
         this.currentLocation = findResult
         return;
     }
@@ -132,11 +132,14 @@ export default class Map {
     }
 
     getCurrentLocationEvents(){
-        console.log(this.currentLocation.getEventList())
         if (this.currentLocation.getEventList() !== undefined){
             return this.currentLocation.getEventList();
         }else{
             return undefined;
         }
+    }
+
+    getCurrentLocationJuice(){
+        return this.currentLocation.getJuice();
     }
 }

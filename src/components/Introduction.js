@@ -1,5 +1,4 @@
 import React from "react";
-import Delay from "react-delay";
 import { Main, Heading, Box } from "grommet";
 
 class Introduction extends React.Component {
@@ -29,12 +28,6 @@ class Introduction extends React.Component {
     );
     return Component;
   }
-
-  // componentDidMount(){
-  //     setTimeout(function() { //Start the timer
-  //         this.setState({render: true}) //After 1 second, set render to true
-  //     }.bind(this), 1000)
-  // }
 }
 
 export default Introduction;
