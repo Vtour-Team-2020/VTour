@@ -12,13 +12,11 @@ import RightActionBar from "./toursubcomponents/RightActionBar";
 import LeftActionBar from "./toursubcomponents/LeftActionBar";
 
 // import entrance pic
-import entrancePic from "./blogic/resource/images/entrance.png";
+import entrancePic from "./blogic/resource/images/HO.png";
 
 // import biz loig
 import User from "./blogic/User";
 
-// import entrance
-import entrance from "./blogic/resource/images/entrance.png";
 
 class Tour extends React.Component {
   constructor(props) {
@@ -34,7 +32,7 @@ class Tour extends React.Component {
       mainPic: "",
 
       // entrance pic
-      entrance: "url(" + { entrancePic } + ")",
+      entrance: entrancePic,
 
       // available movements indicated in boolean
       canMoveUp: true,
@@ -82,8 +80,7 @@ class Tour extends React.Component {
           smallphones: "(max-height: 373px)",
           regularPhones: "(min-height: 374px) and (max-height: 600px)",
           large:
-            "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
-          desktop: "(min-width: 1026px) and (min-height: 769px)"
+            "(min-width: 731px) and (min-height: 700px)"
         }}
       >
         {matches => (
@@ -123,7 +120,7 @@ class Tour extends React.Component {
                 >
                   {!this.state.userActive && (
                     <Box justify="center">
-                      <Image fit="contain" src={entrancePic} />
+                      <Image fit="contain" src={this.state.entrance} />
                     </Box>
                   )}
                   {this.state.userActive &&
@@ -176,7 +173,7 @@ class Tour extends React.Component {
                       <Image
                         fit="contain"
                         // fill={true}
-                        src={entrance}
+                        src={this.state.entrance}
                       />
                     </Box>
                   )}
@@ -198,7 +195,7 @@ class Tour extends React.Component {
             )}
 
             {//fragment  for bigger screens
-            (matches.large || matches.desktop) && (
+            (matches.large) && (
               // the entire view box
               <Box
                 direction="row"
@@ -234,7 +231,7 @@ class Tour extends React.Component {
                       <Image
                         // fit="cover"
                         fill={true}
-                        src={{entrance}}
+                        src={this.state.entrance}
                       />
                     </Box>
                   )}
@@ -480,6 +477,7 @@ class Tour extends React.Component {
       this.state.currentUser.getLocationInfo()
     )
   }
+  
   //delay implemented here
   componentDidUpdate() {
     console.log(this.state.currentUser.getLocationInfo())
@@ -489,10 +487,10 @@ class Tour extends React.Component {
           this.setState(function() {
             var stoppic = this.state.currentUser.getCurrentLocationPic();
             if (stoppic !== null) {
+              console.log("setting stop pic now")
               return {
                 onLeftBar: true,
                 onRightBar: true,
-                mainPic: stoppic
               };
             }
             return {
@@ -501,7 +499,7 @@ class Tour extends React.Component {
             };
           });
         }.bind(this),
-        3000
+        2000
       );
     }
   }

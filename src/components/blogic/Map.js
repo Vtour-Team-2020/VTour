@@ -1,21 +1,19 @@
-import AllLocations from "./locationdata"
 import Location from "./Location"
 
-import Media from "./mediaResource"
-import mediaResource from "./mediaResource";
-import TestAllLocations from "./ActualLocationData"
+import mediaResource from "./MediaResource"
+import AllLocations from "./ActualLocationData"
 
 export default class Map {
     constructor(){
         // init empty array
         this.locationArray = [];
-        this.entrancePic = Media.entrance
+        this.entrancePic = mediaResource.entrance
 
         this.eventLists = mediaResource.eventLists
         
         // testMedResource = AllLocations
 
-        var locations = TestAllLocations
+        var locations = AllLocations
 
         this.currentLocation = "";
         for( var key in locations ){

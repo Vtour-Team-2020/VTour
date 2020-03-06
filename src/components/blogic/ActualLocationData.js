@@ -1,16 +1,16 @@
 export default {
-  GS: {
-    name: "GS",
+  GGS: {
+    name: "GGS",
 
     upNeighbour: "B1",
     downNeighbour: "HO",
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "GS",
+    locationPic: "GGS",
 
-    upVideo: "GSB1",
-    downVideo: "GSHO",
+    upVideo: "GGSB1",
+    downVideo: "GGSHO",
     leftVideo: null,
     rightVideo: null,
 
@@ -21,14 +21,14 @@ export default {
     name: "B1",
 
     upNeighbour: "ABB",
-    downNeighbour: "GS",
+    downNeighbour: "GGS",
     leftNeighbour: null,
     rightNeighbour: "L1C",
 
     locationPic: "B1",
 
     upVideo: "B1ABB",
-    downVideo: "B1GS",
+    downVideo: "B1GGS",
     leftVideo: null,
     rightVideo: "B1L1C",
 
@@ -78,7 +78,7 @@ export default {
     leftNeighbour: null,
     rightNeighbour: "MPC",
 
-    locationPic: "APAN",
+    locationPic: "AS",
 
     upVideo: "ASAPAN",
     downVideo: "ASABB",
@@ -122,6 +122,7 @@ export default {
 
     juice: "MPC - The cradle of (most) elite atheletes. You can use it with your friends whenever it is free (which is a rare occurance, come on it is Eusoff)"
   },
+
   L1C: {
     name: "L1C",
 
@@ -139,18 +140,19 @@ export default {
 
     juice: null
   },
+
   L1S: {
     name: "L1S",
 
     upNeighbour: "DSS",
-    downNeighbour: null,
+    downNeighbour: "L1C",
     leftNeighbour: null,
     rightNeighbour: "FHS",
 
     locationPic: "L1S",
 
     upVideo: "L1SDSS",
-    downVideo: null,
+    downVideo: "L1SL1C",
     leftVideo: null,
     rightVideo: "L1SFHS",
 
@@ -162,7 +164,7 @@ export default {
     upNeighbour: "DS",
     downNeighbour: "L1S",
     leftNeighbour: "GYM",
-    rightNeighbour: "BR",
+    rightNeighbour: null,
 
     locationPic: "DSS",
 
@@ -229,15 +231,15 @@ export default {
 
     upNeighbour: "FH",
     downNeighbour: null,
-    leftNeighbour: "L1S",
-    rightNeighbour: "DHS",
+    leftNeighbour: "DHS",
+    rightNeighbour: "L1S",
 
     locationPic: "FHS",
 
     upVideo: "FHSFH",
     downVideo: null,
-    leftVideo: "FHSL1S",
-    rightVideo: "FHSDHS",
+    leftVideo: "FHSDHS",
+    rightVideo: "FHSL1S",
 
     juice: "Level two of admin block (Function Hall)."
   },
@@ -298,16 +300,16 @@ export default {
   DHS: {
     name: "DHS",
 
-    upNeighbour: "DH",
+    upNeighbour: null,
     downNeighbour: "HO",
-    leftNeighbour: null,
+    leftNeighbour: "DH",
     rightNeighbour: "FHS",
 
     locationPic: "DHS",
 
-    upVideo: "DHSDH",
+    upVideo: null,
     downVideo: "DHSHO",
-    leftVideo: null,
+    leftVideo: "DHSDH",
     rightVideo: "DHSFHS",
 
     juice: "Level three of admin block. Connects hall office and dining hall."
@@ -335,14 +337,14 @@ export default {
 
     upNeighbour: null,
     downNeighbour: null,
-    leftNeighbour: "GS",
+    leftNeighbour: "GGS",
     rightNeighbour: "RRS",
 
     locationPic: "HO",
 
     upVideo: null,
     downVideo: null,
-    leftVideo: "HOGS",
+    leftVideo: "HOGGS",
     rightVideo: "HORRS",
 
     juice: "Hall Office - you only visit once an academic year (or unless you break something)."

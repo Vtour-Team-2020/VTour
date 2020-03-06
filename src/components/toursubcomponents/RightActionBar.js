@@ -4,8 +4,7 @@ import Media from "react-media";
 import { Box, Button, Layer, Text, Image, List } from "grommet";
 import { Info, FormClose, Projects, Waypoint } from "grommet-icons";
 
-import mediaResource from "../blogic/mediaResource";
-import ActualMediaResource from "../blogic/ActualMediaResource"
+import mediaResource from "../blogic/MediaResource";
 
 class RightActionBar extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class RightActionBar extends React.Component {
   render() {
 
     // const MapList = mediaResource.mapList;
-    const MapList = ActualMediaResource.mapList;
+    const MapList = mediaResource.mapList;
 
 
 
@@ -917,7 +916,7 @@ class RightActionBar extends React.Component {
                       alignSelf="center"
                     />
                     <Button
-                      icon={<brand color="dark-3" />}
+                      icon={<Projects color="dark-3" />}
                       alignSelf="center"
                     />
                   </Box>
