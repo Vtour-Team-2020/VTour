@@ -53,6 +53,7 @@ export default class Location {
 
     getLocationInfo(){
         var LocationInfo = {
+            name : this.name,
             upNeighbour : this.upNeighbour,
             downNeighbour : this.downNeighbour,
             leftNeighbour : this.leftNeighbour,

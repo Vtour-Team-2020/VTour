@@ -4,19 +4,16 @@ import React, { Fragment } from "react";
 // import grommet to use their built-in component
 import { Box, Image } from "grommet";
 
-// import entrance pic
-import entrancePic from "./blogic/resource/images/HO.png";
-
 //
 import Media from "react-media";
 
-class Gif extends React.Component {
+class Static extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    let component = (
+    let component = (<div>
       <Media
         queries={{
           smallphones: "(max-height: 373px)",
@@ -145,7 +142,7 @@ class Gif extends React.Component {
             )}
           </Fragment>
         )}
-      </Media>
+      </Media></div>
     );
 
     return component;
@@ -161,10 +158,6 @@ class Gif extends React.Component {
       </Box>
     );
   }
-
-  componentDidUpdate(){
-      console.log("gif updated")
-  }
 }
 
-export default Gif;
+export default Static;

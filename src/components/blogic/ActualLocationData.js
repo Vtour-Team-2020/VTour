@@ -308,7 +308,7 @@ export default {
     locationPic: "DHS",
 
     upVideo: null,
-    downVideo: "DHSHO",
+    downVideo: "DHSRRS",
     leftVideo: "DHSDH",
     rightVideo: "DHSFHS",
 

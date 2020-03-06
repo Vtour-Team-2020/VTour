@@ -10,14 +10,14 @@ import Media from "react-media";
 // import sub components
 import RightActionBar from "./RightActionBar";
 import LeftActionBar from "./LeftActionBar";
-import Gif from "./Gif.js"
+import Gif from "./Gif.js";
+import Static from "./Static.js";
 
 // import entrance pic
 import entrancePic from "./blogic/resource/images/HO.png";
 
 // import biz loig
 import User from "./blogic/User";
-
 
 class Tour extends React.Component {
   constructor(props) {
@@ -48,8 +48,9 @@ class Tour extends React.Component {
 
       eventList: undefined,
       hasEvent: false,
-
-      Juice: ""
+      moving: false,
+      Juice: "",
+      movingPic: ""
     };
 
     // binding all these methods to the child components to access their state update
@@ -80,8 +81,7 @@ class Tour extends React.Component {
         queries={{
           smallphones: "(max-height: 373px)",
           regularPhones: "(min-height: 374px) and (max-height: 600px)",
-          large:
-            "(min-width: 731px) and (min-height: 700px)"
+          large: "(min-width: 731px) and (min-height: 700px)"
         }}
       >
         {matches => (
@@ -120,10 +120,23 @@ class Tour extends React.Component {
                   align="center"
                 >
                   {!this.state.userActive && (
-                    <Gif entrance={this.state.entrance} userActive={this.state.userActive}/>
+                    <Gif
+                      entrance={this.state.entrance}
+                      userActive={this.state.userActive}
+                    />
                   )}
                   {this.state.userActive &&
-                  <Gif entrance={this.state.mainPic} userActive={this.state.userActive}/>}
+                    (this.state.moving ? (
+                      <Gif
+                        entrance={this.state.movingPic}
+                        userActive={this.state.userActive}
+                      />
+                    ) : (
+                      <Gif
+                        entrance={this.state.stoppic}
+                        userActive={this.state.userActive}
+                      />
+                    ))}
                 </Box>
                 <RightActionBar
                   getJumpLocationUpdate={this.getJumpLocationUpdate}
@@ -169,12 +182,24 @@ class Tour extends React.Component {
                 >
                   {!this.state.userActive && (
                     <Box justify="center">
-                      <Gif entrance={this.state.entrance} userActive={this.state.userActive}/>
+                      <Gif
+                        entrance={this.state.entrance}
+                        userActive={this.state.userActive}
+                      />
                     </Box>
                   )}
-
                   {this.state.userActive &&
-                    <Gif entrance={this.state.mainPic} userActive={this.state.userActive}/>}
+                    (this.state.moving ? (
+                      <Gif
+                        entrance={this.state.movingPic}
+                        userActive={this.state.userActive}
+                      />
+                    ) : (
+                      <Gif
+                        entrance={this.state.stoppic}
+                        userActive={this.state.userActive}
+                      />
+                    ))}
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
@@ -190,7 +215,7 @@ class Tour extends React.Component {
             )}
 
             {//fragment  for bigger screens
-            (matches.large) && (
+            matches.large && (
               // the entire view box
               <Box
                 direction="row"
@@ -222,12 +247,24 @@ class Tour extends React.Component {
                   align="center"
                 >
                   {!this.state.userActive && (
-                    <Gif entrance={this.state.entrance} userActive={this.state.userActive}/>
+                    <Gif
+                      entrance={this.state.entrance}
+                      userActive={this.state.userActive}
+                    />
                   )}
 
                   {this.state.userActive &&
-                    <Gif entrance={this.state.mainPic} userActive={this.state.userActive}/>
-                    }
+                    (this.state.moving ? (
+                      <Gif
+                        entrance={this.state.movingPic}
+                        userActive={this.state.userActive}
+                      />
+                    ) : (
+                      <Gif
+                        entrance={this.state.stoppic}
+                        userActive={this.state.userActive}
+                      />
+                    ))}
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
@@ -257,83 +294,71 @@ class Tour extends React.Component {
    *  4. update relevant states [this.updateLocationStates]
    */
   getUpActionUpdate() {
-    let mainPic_file_path = "";
+    this.setState({ moving: true });
     if (this.state.currentUser.getTransitionGif("up") !== undefined) {
-      mainPic_file_path = this.state.currentUser.getTransitionGif("up");
+      this.setState({
+        movingPic: this.state.currentUser.getTransitionGif("up")
+      });
     }
     this.state.currentUser.changeLocation("up");
 
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
 
     this.setUserActive();
-
-    if (mainPic_file_path) {
-      this.setState({ mainPic: mainPic_file_path });
-    }
-    // turn left bar off momentarily
     this.turnOffLeftBar();
     this.turnOffRightBar();
-    //implemented delay under component did update which turns the thing back on after 3.5s
+
+    var stoppic = this.state.currentUser.getCurrentLocationPic();
   }
 
   getDownActionUpdate() {
-    let mainPic_file_path = "";
+    this.setState({ moving: true });
+    this.setState({ mainPic: "" });
     if (this.state.currentUser.getTransitionGif("down") !== undefined) {
-      mainPic_file_path = this.state.currentUser.getTransitionGif("down");
+      this.setState({
+        movingPic: this.state.currentUser.getTransitionGif("down")
+      });
     }
     this.state.currentUser.changeLocation("down");
 
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
 
     this.setUserActive();
-
-    if (mainPic_file_path) {
-      this.setState({ mainPic: mainPic_file_path });
-    }
-    // turn left bar off momentarily
     this.turnOffLeftBar();
     this.turnOffRightBar();
-    //implemented delay under component did update which turns the thing back on after 3.5s
   }
 
   getRightActionUpdate() {
-    let mainPic_file_path = "";
+    this.setState({ mainPic: "" });
+    this.setState({ moving: true });
     if (this.state.currentUser.getTransitionGif("right") !== undefined) {
-      mainPic_file_path = this.state.currentUser.getTransitionGif("right");
+      this.setState({
+        movingPic: this.state.currentUser.getTransitionGif("right")
+      });
     }
     this.state.currentUser.changeLocation("right");
 
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
 
     this.setUserActive();
-
-    if (mainPic_file_path) {
-      this.setState({ mainPic: mainPic_file_path });
-    }
-    // turn left bar off momentarily
     this.turnOffLeftBar();
     this.turnOffRightBar();
-    //implemented delay under component did update which turns the thing back on after 3.5s
   }
 
   getLeftActionUpdate() {
-    let mainPic_file_path = "";
+    this.setState({ moving: true });
     if (this.state.currentUser.getTransitionGif("left") !== undefined) {
-      mainPic_file_path = this.state.currentUser.getTransitionGif("left");
+      this.setState({
+        movingPic: this.state.currentUser.getTransitionGif("left")
+      });
     }
     this.state.currentUser.changeLocation("left");
 
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
 
     this.setUserActive();
-
-    if (mainPic_file_path) {
-      this.setState({ mainPic: mainPic_file_path });
-    }
-    // turn left bar off momentarily
     this.turnOffLeftBar();
     this.turnOffRightBar();
-    //implemented delay under component did update which turns the thing back on after 3.5s
   }
 
   /**
@@ -396,8 +421,8 @@ class Tour extends React.Component {
 
     // Juice Update
     this.setState({
-      juice : this.state.currentUser.getJuice()
-    })
+      juice: this.state.currentUser.getJuice()
+    });
     // Event state update
     if (this.state.currentUser.getCurrentLocationEvents() !== undefined) {
       this.setState({
@@ -462,25 +487,25 @@ class Tour extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.currentUser.getLocationInfo())
-    this.updateLocationStates(
-      this.state.currentUser.getLocationInfo()
-    )
+    console.log(this.state.currentUser.getLocationInfo());
+    this.updateLocationStates(this.state.currentUser.getLocationInfo());
   }
-  
+
   //delay implemented here
   componentDidUpdate() {
-    console.log(this.state.currentUser.getLocationInfo())
+    console.log(this.state.currentUser.getLocationInfo());
     if (this.state.onLeftBar === false) {
       setTimeout(
         function() {
           this.setState(function() {
             var stoppic = this.state.currentUser.getCurrentLocationPic();
             if (stoppic !== null) {
-              console.log("setting stop pic now")
+              console.log("setting stop pic now");
               return {
                 onLeftBar: true,
                 onRightBar: true,
+                moving: false,
+                stoppic: stoppic
               };
             }
             return {
@@ -489,7 +514,7 @@ class Tour extends React.Component {
             };
           });
         }.bind(this),
-        2000
+        3000
       );
     }
   }
