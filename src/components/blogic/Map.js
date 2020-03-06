@@ -1,6 +1,6 @@
 import Location from "./Location"
 
-import mediaResource from "./mediaresource"
+import mediaResource from "./mediamapping"
 import AllLocations from "./ActualLocationData"
 
 export default class Map {
