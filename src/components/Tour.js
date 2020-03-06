@@ -8,8 +8,8 @@ import { Box, Image } from "grommet";
 import Media from "react-media";
 
 // import sub components
-import RightActionBar from "./toursubcomponents/RightActionBar";
-import LeftActionBar from "./toursubcomponents/LeftActionBar";
+import RightActionBar from "./RightActionBar";
+import LeftActionBar from "./LeftActionBar";
 
 // import entrance pic
 import entrancePic from "./blogic/resource/images/HO.png";
