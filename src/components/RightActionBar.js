@@ -4,7 +4,7 @@ import Media from "react-media";
 import { Box, Button, Layer, Text, Image, List } from "grommet";
 import { Info, FormClose, Projects, Waypoint } from "grommet-icons";
 
-import mediaResource from "./blogic/MediaResource.js";
+import mediaResource from "./blogic/mediaresource"
 
 class RightActionBar extends React.Component {
   constructor(props) {
