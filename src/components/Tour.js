@@ -10,6 +10,7 @@ import Media from "react-media";
 // import sub components
 import RightActionBar from "./RightActionBar";
 import LeftActionBar from "./LeftActionBar";
+import Gif from "./Gif.js"
 
 // import entrance pic
 import entrancePic from "./blogic/resource/images/HO.png";
@@ -119,12 +120,10 @@ class Tour extends React.Component {
                   align="center"
                 >
                   {!this.state.userActive && (
-                    <Box justify="center">
-                      <Image fit="contain" src={this.state.entrance} />
-                    </Box>
+                    <Gif entrance={this.state.entrance} userActive={this.state.userActive}/>
                   )}
                   {this.state.userActive &&
-                    this.picRendering(this.state.mainPic)}
+                  <Gif entrance={this.state.mainPic} userActive={this.state.userActive}/>}
                 </Box>
                 <RightActionBar
                   getJumpLocationUpdate={this.getJumpLocationUpdate}
@@ -170,16 +169,12 @@ class Tour extends React.Component {
                 >
                   {!this.state.userActive && (
                     <Box justify="center">
-                      <Image
-                        fit="contain"
-                        // fill={true}
-                        src={this.state.entrance}
-                      />
+                      <Gif entrance={this.state.entrance} userActive={this.state.userActive}/>
                     </Box>
                   )}
 
                   {this.state.userActive &&
-                    this.picRendering(this.state.mainPic)}
+                    <Gif entrance={this.state.mainPic} userActive={this.state.userActive}/>}
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
@@ -227,17 +222,12 @@ class Tour extends React.Component {
                   align="center"
                 >
                   {!this.state.userActive && (
-                    <Box justify="center">
-                      <Image
-                        // fit="cover"
-                        fill={true}
-                        src={this.state.entrance}
-                      />
-                    </Box>
+                    <Gif entrance={this.state.entrance} userActive={this.state.userActive}/>
                   )}
 
                   {this.state.userActive &&
-                    this.picRendering(this.state.mainPic)}
+                    <Gif entrance={this.state.mainPic} userActive={this.state.userActive}/>
+                    }
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
