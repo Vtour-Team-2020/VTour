@@ -11,7 +11,6 @@ import Media from "react-media";
 import RightActionBar from "./RightActionBar";
 import LeftActionBar from "./LeftActionBar";
 import Gif from "./Gif.js";
-import Static from "./Static.js";
 
 // import entrance pic
 import entrancePic from "./blogic/resource/images/HO.png";
@@ -51,6 +50,7 @@ class Tour extends React.Component {
       moving: false,
       Juice: "",
       movingPic: "",
+      stopPic: "",
 
       staticMount: false
     };
@@ -132,17 +132,12 @@ class Tour extends React.Component {
                     </Box>
                   )}
                   {this.state.userActive &&
-                    (this.state.moving ? (
                       <Gif
-                        entrance={this.state.movingPic}
-                        userActive={this.state.userActive}
-                      />
-                    ) : ( 
-                      <Static
-                        entrance={this.state.movingPic}
-                        userActive={this.state.userActive}
-                      />
-                    ))}
+                      moving={this.state.moving}
+                      movingPic={this.state.movingPic}
+                      stopPic={this.state.stopPic}
+                      userActive={this.state.userActive}
+                    />}
                 </Box>
                 <RightActionBar
                   getJumpLocationUpdate={this.getJumpLocationUpdate}
@@ -189,23 +184,18 @@ class Tour extends React.Component {
                   {!this.state.userActive && (
                     <Box justify="center">
                       <Gif
-                        entrance={this.state.entrance}
+                        static={this.state.entrance}
                         userActive={this.state.userActive}
                       />
                     </Box>
                   )}
                   {this.state.userActive &&
-                    (this.state.moving ? (
                       <Gif
-                        entrance={this.state.movingPic}
-                        userActive={this.state.userActive}
-                      />
-                    ) : ( 
-                      <Static
-                        entrance={this.state.movingPic}
-                        userActive={this.state.userActive}
-                      />
-                    ))}
+                      moving={this.state.moving}
+                      movingPic={this.state.movingPic}
+                      stopPic={this.state.stopPic}
+                      userActive={this.state.userActive}
+                    />}
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
@@ -259,17 +249,12 @@ class Tour extends React.Component {
                     />
                   )}
                   {this.state.userActive &&
-                    (this.state.moving ? (
                       <Gif
-                        entrance={this.state.movingPic}
-                        userActive={this.state.userActive}
-                      />
-                    ) : ( 
-                      <Static
-                        entrance={this.state.movingPic}
-                        userActive={this.state.userActive}
-                      />
-                    ))}
+                      moving={this.state.moving}
+                      movingPic={this.state.movingPic}
+                      stopPic={this.state.stopPic}
+                      userActive={this.state.userActive}
+                    />}
                 </Box>
                 {/* Passing down the parent's getActionUpdate as a prop to be called in the
                             child component, it then changes the state in the parent component */}
@@ -299,26 +284,18 @@ class Tour extends React.Component {
    *  4. update relevant states [this.updateLocationStates]
    */
   getUpActionUpdate() {
+    var movingPicKey = this.state.currentUser.getTransitionGif("up")    
     this.setState({ moving: true });
-    if (this.state.currentUser.getTransitionGif("up") !== undefined) {
-      this.setState({
-        movingPic: this.state.currentUser.getTransitionGif("up")
-      });
-    }
     this.state.currentUser.changeLocation("up");
-
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
-
+    this.setState({  movingPic: movingPicKey });
     this.setUserActive();
     this.turnOffLeftBar();
     this.turnOffRightBar();
-
-    var stoppic = this.state.currentUser.getCurrentLocationPic();
   }
 
   getDownActionUpdate() {
     this.setState({ moving: true });
-    this.setState({ mainPic: "" });
     if (this.state.currentUser.getTransitionGif("down") !== undefined) {
       this.setState({
         movingPic: this.state.currentUser.getTransitionGif("down")
@@ -395,7 +372,7 @@ class Tour extends React.Component {
     var stoppic = this.state.currentUser.getCurrentLocationPic();
 
     if (stoppic) {
-      this.setState({ movingPic: stoppic, jumped: false });
+      this.setState({ stopPic: stoppic, jumped: false });
     }
   }
 
@@ -516,12 +493,13 @@ class Tour extends React.Component {
           this.setState(function() {
             var stoppic = this.state.currentUser.getCurrentLocationPic();
             if (stoppic !== null) {
-              console.log("setting stop pic now");
+              console.log("setting stop pic now and remove movingpic");
               return {
                 onLeftBar: true,
                 onRightBar: true,
                 moving: false,
-                stoppic: stoppic
+                movingPic: undefined,
+                stopPic: stoppic
               };
             }
             return {

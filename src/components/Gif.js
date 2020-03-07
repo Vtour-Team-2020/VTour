@@ -54,7 +54,21 @@ class Gif extends React.Component {
                   )}
                   {this.props.userActive && (
                     <Box justify="center">
-                      <Image fit="contain" src={this.props.entrance} />
+                                          {this.props.moving && 
+                    (
+                        <Image
+                        fit="contain"
+                        src={this.props.movingPic}
+                      />
+                    )
+                    }{
+                        !this.props.moving && (
+                            <Image
+                            fit="contain"
+                            src={this.props.stopPic}
+                          />
+                        )
+                    }
                     </Box>
                   )}
                 </Box>
@@ -86,17 +100,28 @@ class Gif extends React.Component {
                     <Box justify="center">
                       <Image
                         fit="contain"
-                        src={this.props.entrance}
+                        src={this.props.static}
                       />
                     </Box>
                   )}
 
                   {this.props.userActive &&
                     <Box justify="center">
-                    <Image
-                      fit="contain"
-                      src={this.props.entrance}
-                    />
+                    {this.props.moving && 
+                    (
+                        <Image
+                        fit="contain"
+                        src={this.props.movingPic}
+                      />
+                    )
+                    }{
+                        !this.props.moving && (
+                            <Image
+                            fit="contain"
+                            src={this.props.stopPic}
+                          />
+                        )
+                    }
                   </Box>
                     }
                 </Box>
@@ -135,11 +160,23 @@ class Gif extends React.Component {
 
                   {this.props.userActive &&
                     <Box justify="center">
-                    <Image
-                      fit="contain"
-                      src={this.props.entrance}
-                    />
-                  </Box>}
+                    {this.props.moving && 
+                    (
+                        <Image
+                        fit="contain"
+                        src={this.props.movingPic}
+                      />
+                    )
+                    }{
+                        !this.props.moving && (
+                            <Image
+                            fit="contain"
+                            src={this.props.stopPic}
+                          />
+                        )
+                    }
+                  </Box>
+                  }
                 </Box>
               </Box>
             )}

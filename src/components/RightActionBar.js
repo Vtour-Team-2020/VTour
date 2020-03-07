@@ -36,9 +36,6 @@ class RightActionBar extends React.Component {
 
     // const MapList = mediaResource.mapList;
     const MapList = mediaResource.mapList;
-    console.log(MapList)
-    console.log(this.props.eventList)
-
     return (
       <Media
         queries={{
