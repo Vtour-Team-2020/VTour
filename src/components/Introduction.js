@@ -19,7 +19,7 @@ class Introduction extends React.Component {
                 <span style={{ color: "yellow", fontStyle: "italic" }}>
                   EUSOFF
                 </span>{" "}
-                Online
+                Virtual Tour
               </span>
             </Heading>
           </Main>
