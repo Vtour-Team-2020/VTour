@@ -118,16 +118,27 @@ export default class Map {
         }
     }
 
-    getCurrentLocationPic(){
+    getCurrentLocationPics(){
         try{
-            let pic_key = this.currentLocation.getLocationPic()
+            let pic_key = this.currentLocation.getLocationPics()
             
-            let pic = mediaResource.images[pic_key]
+            let pic = mediaResource.locations[pic_key]
             return pic;
         } catch(err) {
             console.log(err)
         }
     }
+
+    getCurrentLocationPicl(){
+        try{
+            let pic_key = this.currentLocation.getLocationPicl()
+            
+            let pic = mediaResource.locationl[pic_key]
+            return pic;
+        } catch(err) {
+            console.log(err)
+        }
+    }    
 
     getCurrentLocationEvents(){
         if (this.currentLocation.getEventList() !== undefined){

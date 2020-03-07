@@ -2,10 +2,7 @@
 import React, { Fragment } from "react";
 
 // import grommet to use their built-in component
-import { Box, Image } from "grommet";
-
-// import entrance pic
-import entrancePic from "./blogic/resource/images/HO.png";
+import { Box, Image, Stack } from "grommet";
 
 //
 import Media from "react-media";
@@ -26,57 +23,8 @@ class Gif extends React.Component {
       >
         {matches => (
           <Fragment>
-            {// Fragment 1 for small phones
-            matches.smallphones && (
-              // the entire view box
-              <Box
-                direction="row"
-                justify="center"
-                align="center"
-                width="100%"
-                margin={{
-                  left: "0px",
-                  right: "0px",
-                  top: "5%",
-                  bottom: "5%"
-                }}
-              >
-                <Box
-                  width="430px"
-                  height="241px"
-                  justify="center"
-                  align="center"
-                >
-                  {!this.props.userActive && (
-                    <Box justify="center">
-                      <Image fit="contain" src={this.props.entrance} />
-                    </Box>
-                  )}
-                  {this.props.userActive && (
-                    <Box justify="center">
-                                          {this.props.moving && 
-                    (
-                        <Image
-                        fit="contain"
-                        src={this.props.movingPic}
-                      />
-                    )
-                    }{
-                        !this.props.moving && (
-                            <Image
-                            fit="contain"
-                            src={this.props.stopPic}
-                          />
-                        )
-                    }
-                    </Box>
-                  )}
-                </Box>
-              </Box>
-            )}
-
             {// Fragment 2 for most phones out there
-            matches.regularPhones && (
+            (matches.regularPhones || matches.smallphones || matches.large ) && (
               // the entire view box
               <Box
                 direction="row"
@@ -98,85 +46,35 @@ class Gif extends React.Component {
                 >
                   {!this.props.userActive && (
                     <Box justify="center">
-                      <Image
-                        fit="contain"
-                        src={this.props.static}
-                      />
+                      <Image fit="cover" src={this.props.static} />
                     </Box>
                   )}
 
-                  {this.props.userActive &&
+                  {this.props.userActive && (
                     <Box justify="center">
-                    {this.props.moving && 
-                    (
-                        <Image
-                        fit="contain"
-                        src={this.props.movingPic}
-                      />
-                    )
-                    }{
-                        !this.props.moving && (
-                            <Image
-                            fit="contain"
-                            src={this.props.stopPic}
-                          />
-                        )
-                    }
-                  </Box>
-                    }
-                </Box>
-              </Box>
-            )}
-
-            {//fragment  for bigger screens
-            matches.large && (
-              // the entire view box
-              <Box
-                direction="row"
-                justify="center"
-                align="center"
-                width="100%"
-                margin={{
-                  left: "0px",
-                  right: "0px",
-                  top: "5%",
-                  bottom: "5%"
-                }}
-              >
-                <Box
-                  width="806px"
-                  height="454px"
-                  justify="center"
-                  align="center"
-                >
-                  {!this.props.userActive && (
-                    <Box justify="center">
-                      <Image
-                        fill={true}
-                        src={this.props.entrance}
-                      />
+                      <Stack anchor="center" alignSelf="center">
+                        {" "}
+                        <Box
+                          width="550px"
+                          height="310px"
+                          justify="center"
+                          align="center"
+                        >
+                          <Image fit="cover" src={this.props.movingPic} />
+                        </Box>
+                        {!this.props.moving && (
+                          <Box
+                            width="550px"
+                            height="310px"
+                            justify="center"
+                            align="center"
+                          >
+                            <Image fit="cover" src={this.props.stopPic} />
+                          </Box>
+                        )}
+                      </Stack>
                     </Box>
                   )}
-
-                  {this.props.userActive &&
-                    <Box justify="center">
-                    {this.props.moving && 
-                    (
-                        <Image
-                        fit="contain"
-                        src={this.props.movingPic}
-                      />
-                    )
-                    }{
-                        !this.props.moving && (
-                            <Image
-                            fit="contain"
-                            src={this.props.stopPic}
-                          />
-                        )
-                    }
-                  </Box>
-                  }
                 </Box>
               </Box>
             )}
@@ -191,16 +89,13 @@ class Gif extends React.Component {
   picRendering(pickey) {
     return (
       <Box direction="row" justify="center">
-        <Image
-          fit="contain"
-          src={pickey}
-        />
+        <Image fit="contain" src={pickey} />
       </Box>
     );
   }
 
-  componentDidUpdate(){
-      console.log("gif updated")
+  componentDidUpdate() {
+    console.log("gif updated");
   }
 }
 

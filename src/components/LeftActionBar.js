@@ -34,126 +34,12 @@ class LeftActionBar extends React.Component {
       >
         {matches => (
           <Fragment>
-            {matches.smallphones && (
-              <Box
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="240px"
-                background={{
-                  color: "dark-1"
-                }}
-              >
-                {this.props.onLeftBar && (
-                  <Box align="center" direction="column">
-                    {this.props.canMoveUp ? (
-                      <Button
-                        icon={<CaretUp color="brand" />}
-                        onClick={this.props.getUpActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretUp color="dark-3" />}></Button>
-                    )}
-                    {this.props.canMoveDown ? (
-                      <Button
-                        icon={<CaretDown color="brand" />}
-                        onClick={this.props.getDownActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretDown color="dark-3" />}></Button>
-                    )}
-
-                    {this.props.canMoveLeft ? (
-                      <Button
-                        icon={<CaretPrevious color="brand" />}
-                        onClick={this.props.getLeftActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretPrevious color="dark-3" />}></Button>
-                    )}
-                    {this.props.canMoveRight ? (
-                      <Button
-                        icon={<CaretNext color="brand" />}
-                        onClick={this.props.getRightActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretNext color="dark-3" />}></Button>
-                    )}
-                  </Box>
-                )}
-                {!this.props.onLeftBar && (
-                  <Box align="center" direction="column">
-                    <Button icon={<CaretUp color="dark-3" />}></Button>
-                    <Button icon={<CaretDown color="dark-3" />}></Button>
-                    <Button icon={<CaretPrevious color="dark-3" />}></Button>
-                    <Button icon={<CaretNext color="dark-3" />}></Button>
-                  </Box>
-                )}
-              </Box>
-            )}
-            {matches.regularPhones && (
+            {(matches.regularPhones || matches.large || matches.smallphones ) && (
               <Box
                 direction="column"
                 alignSelf="center"
                 justify="center"
                 height="310px"
-                background={{
-                  color: "dark-1"
-                }}
-              >
-                {this.props.onLeftBar && (
-                  <Box align="center" direction="column">
-                    {this.props.canMoveUp ? (
-                      <Button
-                        icon={<CaretUp color="brand" />}
-                        onClick={this.props.getUpActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretUp color="dark-3" />}></Button>
-                    )}
-                    {this.props.canMoveDown ? (
-                      <Button
-                        icon={<CaretDown color="brand" />}
-                        onClick={this.props.getDownActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretDown color="dark-3" />}></Button>
-                    )}
-
-                    {this.props.canMoveLeft ? (
-                      <Button
-                        icon={<CaretPrevious color="brand" />}
-                        onClick={this.props.getLeftActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretPrevious color="dark-3" />}></Button>
-                    )}
-                    {this.props.canMoveRight ? (
-                      <Button
-                        icon={<CaretNext color="brand" />}
-                        onClick={this.props.getRightActionUpdate}
-                      ></Button>
-                    ) : (
-                      <Button icon={<CaretNext color="dark-3" />}></Button>
-                    )}
-                  </Box>
-                )}
-                {!this.props.onLeftBar && (
-                  <Box align="center" direction="column">
-                    <Button icon={<CaretUp color="dark-3" />}></Button>
-                    <Button icon={<CaretDown color="dark-3" />}></Button>
-                    <Button icon={<CaretPrevious color="dark-3" />}></Button>
-                    <Button icon={<CaretNext color="dark-3" />}></Button>
-                  </Box>
-                )}
-              </Box>
-            )}
-            {(matches.large || matches.desktop) && (
-              <Box
-                direction="column"
-                alignSelf="center"
-                justify="center"
-                height="454px"
                 background={{
                   color: "dark-1"
                 }}

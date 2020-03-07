@@ -13,7 +13,7 @@ import LeftActionBar from "./LeftActionBar";
 import Gif from "./Gif.js";
 
 // import entrance pic
-import entrancePic from "./blogic/resource/images/HO.png";
+import entrancePic from "./blogic/resource/locationl/HOL.png";
 
 // import biz loig
 import User from "./blogic/User";
@@ -50,9 +50,11 @@ class Tour extends React.Component {
       moving: false,
       Juice: "",
       movingPic: "",
-      stopPic: "",
+      stopPics: "",
+      stopPicl: "",
 
-      staticMount: false
+      staticMount: false,
+      delay:6000
     };
 
     // binding all these methods to the child components to access their state update
@@ -90,67 +92,8 @@ class Tour extends React.Component {
       >
         {matches => (
           <Fragment>
-            {// Fragment 1 for small phones
-            matches.smallphones && (
-              // the entire view box
-              <Box
-                direction="row"
-                justify="center"
-                align="center"
-                width="100%"
-                margin={{
-                  left: "0px",
-                  right: "0px",
-                  top: "5%",
-                  bottom: "5%"
-                }}
-              >
-                <LeftActionBar
-                  getUpActionUpdate={this.getUpActionUpdate}
-                  getDownActionUpdate={this.getDownActionUpdate}
-                  getLeftActionUpdate={this.getLeftActionUpdate}
-                  getRightActionUpdate={this.getRightActionUpdate}
-                  onLeftBar={this.state.onLeftBar}
-                  canMoveUp={this.state.canMoveUp}
-                  canMoveDown={this.state.canMoveDown}
-                  canMoveLeft={this.state.canMoveLeft}
-                  canMoveRight={this.state.canMoveRight}
-                />
-
-                <Box
-                  width="430px"
-                  height="241px"
-                  justify="center"
-                  align="center"
-                >
-                  {!this.state.userActive && (
-                    <Box justify="center">
-                      <Gif
-                        entrance={this.state.entrance}
-                        userActive={this.state.userActive}
-                      />
-                    </Box>
-                  )}
-                  {this.state.userActive &&
-                      <Gif
-                      moving={this.state.moving}
-                      movingPic={this.state.movingPic}
-                      stopPic={this.state.stopPic}
-                      userActive={this.state.userActive}
-                    />}
-                </Box>
-                <RightActionBar
-                  getJumpLocationUpdate={this.getJumpLocationUpdate}
-                  eventList={this.state.eventList}
-                  hasEvent={this.state.hasEvent}
-                  onRightBar={this.state.onRightBar}
-                  juice={this.state.juice}
-                />
-              </Box>
-            )}
-
-            {// Fragment 2 for most phones out there
-            matches.regularPhones && (
+            {// Fragment 1 for most phones out there
+            ( matches.smallphones || matches.regularPhones || matches.large ) && (
               // the entire view box
               <Box
                 direction="row"
@@ -193,66 +136,7 @@ class Tour extends React.Component {
                       <Gif
                       moving={this.state.moving}
                       movingPic={this.state.movingPic}
-                      stopPic={this.state.stopPic}
-                      userActive={this.state.userActive}
-                    />}
-                </Box>
-                {/* Passing down the parent's getActionUpdate as a prop to be called in the
-                            child component, it then changes the state in the parent component */}
-
-                <RightActionBar
-                  getJumpLocationUpdate={this.getJumpLocationUpdate}
-                  eventList={this.state.eventList}
-                  hasEvent={this.state.hasEvent}
-                  onRightBar={this.state.onRightBar}
-                  juice={this.state.juice}
-                />
-              </Box>
-            )}
-
-            {//fragment  for bigger screens
-            matches.large && (
-              // the entire view box
-              <Box
-                direction="row"
-                justify="center"
-                align="center"
-                width="100%"
-                margin={{
-                  left: "0px",
-                  right: "0px",
-                  top: "5%",
-                  bottom: "5%"
-                }}
-              >
-                <LeftActionBar
-                  getUpActionUpdate={this.getUpActionUpdate}
-                  getDownActionUpdate={this.getDownActionUpdate}
-                  getLeftActionUpdate={this.getLeftActionUpdate}
-                  getRightActionUpdate={this.getRightActionUpdate}
-                  onLeftBar={this.state.onLeftBar}
-                  canMoveUp={this.state.canMoveUp}
-                  canMoveDown={this.state.canMoveDown}
-                  canMoveLeft={this.state.canMoveLeft}
-                  canMoveRight={this.state.canMoveRight}
-                />
-                <Box
-                  width="806px"
-                  height="454px"
-                  justify="center"
-                  align="center"
-                >
-                  {!this.state.userActive && (
-                    <Gif
-                      entrance={this.state.entrance}
-                      userActive={this.state.userActive}
-                    />
-                  )}
-                  {this.state.userActive &&
-                      <Gif
-                      moving={this.state.moving}
-                      movingPic={this.state.movingPic}
-                      stopPic={this.state.stopPic}
+                      stopPic={this.state.stopPics}
                       userActive={this.state.userActive}
                     />}
                 </Box>
@@ -369,11 +253,13 @@ class Tour extends React.Component {
 
     this.setUserActive();
 
-    var stoppic = this.state.currentUser.getCurrentLocationPic();
+    var stoppics = this.state.currentUser.getCurrentLocationPics();
+    var stoppicl = this.state.currentUser.getCurrentLocationPicl();
 
-    if (stoppic) {
-      this.setState({ stopPic: stoppic, jumped: false });
-    }
+      this.setState({ 
+        stopPics: stoppics, 
+        stopPicl: stoppicl, 
+        jumped: false });
   }
 
   /**
@@ -491,15 +377,17 @@ class Tour extends React.Component {
       setTimeout(
         function() {
           this.setState(function() {
-            var stoppic = this.state.currentUser.getCurrentLocationPic();
-            if (stoppic !== null) {
+            var stoppics = this.state.currentUser.getCurrentLocationPics();
+            var stoppicl = this.state.currentUser.getCurrentLocationPicl();
+            if (stoppics !== null) {
               console.log("setting stop pic now and remove movingpic");
               return {
                 onLeftBar: true,
                 onRightBar: true,
                 moving: false,
                 movingPic: undefined,
-                stopPic: stoppic
+                stopPics: stoppics,
+                stopPicl: stoppicl
               };
             }
             return {
@@ -508,7 +396,7 @@ class Tour extends React.Component {
             };
           });
         }.bind(this),
-        3000
+        this.state.delay
       );
     }
   }

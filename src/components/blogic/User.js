@@ -49,8 +49,12 @@ export default class User {
         return this.map.getCurrentLocationJuice();
     }
 
-    getCurrentLocationPic(){
-        return this.map.getCurrentLocationPic()
+    getCurrentLocationPicl(){
+        return this.map.getCurrentLocationPicl()
+    }
+
+    getCurrentLocationPics(){
+        return this.map.getCurrentLocationPics()
     }
 
     getCurrentLocationEvents(){

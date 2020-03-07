@@ -7,7 +7,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "GGS",
+    locationPics: "GGSS",
+    locationPicl: "GGSL",
 
     upVideo: "GGSB1",
     downVideo: "GGSHO",
@@ -25,7 +26,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: "L1C",
 
-    locationPic: "B1",
+    locationPics: "B1S",
+    locationPicl: "B1S",
 
     upVideo: "B1ABB",
     downVideo: "B1GGS",
@@ -43,7 +45,8 @@ export default {
     leftNeighbour: "BL",
     rightNeighbour: "AS",
 
-    locationPic: "ABB",
+    locationPics: "ABBS",
+    locationPicl: "ABBS",
 
     upVideo: null,
     downVideo: "ABBB1",
@@ -61,7 +64,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "BL",
+    locationPics: "BLS",
+    locationPicl: "BLL",
 
     upVideo: null,
     downVideo: "BLABB",
@@ -78,7 +82,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: "MPC",
 
-    locationPic: "AS",
+    locationPics: "ASS",
+    locationPicl: "ASL",
 
     upVideo: "ASAPAN",
     downVideo: "ASABB",
@@ -96,7 +101,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "APAN",
+    locationPics: "APANS",
+    locationPicl: "APANL",
 
     upVideo: null,
     downVideo: "APANAS",
@@ -113,7 +119,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "MPC",
+    locationPics: "MPCS",
+    locationPicl: "MPCL",
 
     upVideo: null,
     downVideo: "MPCAS",
@@ -131,7 +138,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "L1C",
+    locationPics: "L1CS",
+    locationPicl: "L1CL",
 
     upVideo: "L1CL1S",
     downVideo: "L1CB1",
@@ -149,7 +157,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: "FHS",
 
-    locationPic: "L1S",
+    locationPics: "L1SS",
+    locationPicl: "L1SL",
 
     upVideo: "L1SDSS",
     downVideo: "L1SL1C",
@@ -166,7 +175,8 @@ export default {
     leftNeighbour: "GYM",
     rightNeighbour: null,
 
-    locationPic: "DSS",
+    locationPics: "DSSS",
+    locationPicl: "DSSL",
 
     upVideo: "DSSDS",
     downVideo: "DSSL1S",
@@ -183,7 +193,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "BR",
+    locationPics: "BRS",
+    locationPicl: "BRL",
 
     upVideo: null,
     downVideo: "BRDSS",
@@ -200,7 +211,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "DS",
+    locationPics: "DSS",
+    locationPicl: "DSL",
 
     upVideo: null,
     downVideo: "DSDSS",
@@ -217,7 +229,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "GYM",
+    locationPics: "GYMS",
+    locationPicl: "GYML",
 
     upVideo: null,
     downVideo: "GYMDSS",
@@ -234,7 +247,8 @@ export default {
     leftNeighbour: "DHS",
     rightNeighbour: "L1S",
 
-    locationPic: "FHS",
+    locationPics: "FHSS",
+    locationPicl: "FHSL",
 
     upVideo: "FHSFH",
     downVideo: null,
@@ -251,7 +265,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "FH",
+    locationPics: "FHS",
+    locationPicl: "FHL",
 
     upVideo: null,
     downVideo: "FHFHS",
@@ -269,7 +284,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: "RR",
 
-    locationPic: "RRS",
+    locationPics: "RRSS",
+    locationPicl: "RRSL",
 
     upVideo: "RRSDHS",
     downVideo: "RRSHO",
@@ -287,7 +303,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "RR",
+    locationPics: "RRS",
+    locationPicl: "RRL",
 
     upVideo: null,
     downVideo: "RRRRS",
@@ -305,7 +322,8 @@ export default {
     leftNeighbour: "DH",
     rightNeighbour: "FHS",
 
-    locationPic: "DHS",
+    locationPics: "DHSS",
+    locationPicl: "DHSL",
 
     upVideo: null,
     downVideo: "DHSRRS",
@@ -322,7 +340,8 @@ export default {
     leftNeighbour: null,
     rightNeighbour: null,
 
-    locationPic: "DH",
+    locationPics: "DHS",
+    locationPicl: "DHL",
 
     upVideo: null,
     downVideo: "DHDHS",
@@ -340,7 +359,8 @@ export default {
     leftNeighbour: "GGS",
     rightNeighbour: "RRS",
 
-    locationPic: "HO",
+    locationPics: "HOS",
+    locationPicl: "HOL",
 
     upVideo: null,
     downVideo: null,

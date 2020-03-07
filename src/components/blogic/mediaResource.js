@@ -1,23 +1,42 @@
-import RRS from "./resource/images/RRS.png"
-import ABB from "./resource/images/ABB.png"
-import AS from "./resource/images/AS.png"
-import APAN from "./resource/images/APAN.png"
-import B1 from "./resource/images/B1.png"
-import BL from "./resource/images/BL.png"
-import DH from "./resource/images/DH.png"
-import DHS from "./resource/images/DHS.png"
-import DS from "./resource/images/DS.png"
-import DSS from "./resource/images/DSS.png"
-import FH from "./resource/images/FH.png"
-import FHS from "./resource/images/FHS.png"
-import GGS from "./resource/images/GGS.png"
-import GYM from "./resource/images/GYM.png"
-import HO from "./resource/images/HO.png"
-import L1C from "./resource/images/L1C.png"
-import L1S from "./resource/images/L1S.png"
-import MPC from "./resource/images/MPC.png"
-import RR from "./resource/images/RR.png"
+import ABBS from "./resource/locations/ABBS.png"
+import ASS from "./resource/locations/ASS.png"
+import APANS from "./resource/locations/APANS.png"
+import B1S from "./resource/locations/B1S.png"
+import BLS from "./resource/locations/BLS.png"
+import DHS from "./resource/locations/DHS.png"
+import DHSS from "./resource/locations/DHSS.png"
+import DSS from "./resource/locations/DSS.png"
+import DSSS from "./resource/locations/DSSS.png"
+import FHS from "./resource/locations/FHS.png"
+import FHSS from "./resource/locations/FHSS.png"
+import GGSS from "./resource/locations/GGSS.png"
+import GYMS from "./resource/locations/GYMS.png"
+import HOS from "./resource/locations/HOS.png"
+import L1CS from "./resource/locations/L1CS.png"
+import L1SS from "./resource/locations/L1SS.png"
+import MPCS from "./resource/locations/MPCS.png"
+import RRS from "./resource/locations/RRS.png"
+import RRSS from "./resource/locations/RRSS.png"
 
+import ABBL from "./resource/locationl/ABBL.png"
+import ASL from "./resource/locationl/ASL.png"
+import APANL from "./resource/locationl/APANL.png"
+import B1L from "./resource/locationl/B1L.png"
+import BLL from "./resource/locationl/BLL.png"
+import DHL from "./resource/locationl/DHL.png"
+import DHSL from "./resource/locationl/DHSL.png"
+import DSL from "./resource/locationl/DSL.png"
+import DSSL from "./resource/locationl/DSSL.png"
+import FHL from "./resource/locationl/FHL.png"
+import FHSL from "./resource/locationl/FHSL.png"
+import GGSL from "./resource/locationl/GGSL.png"
+import GYML from "./resource/locationl/GYML.png"
+import HOL from "./resource/locationl/HOL.png"
+import L1CL from "./resource/locationl/L1CL.png"
+import L1SL from "./resource/locationl/L1SL.png"
+import MPCL from "./resource/locationl/MPCL.png"
+import RRL from "./resource/locationl/RRL.png"
+import RRSL from "./resource/locationl/RRSL.png"
 
 import ABBSUN from "./resource/event/ABBSUN.jpg"
 import B1BANREV from "./resource/event/B1BANREV.jpg"
@@ -86,76 +105,98 @@ import RRSRR from "./resource/gif/RRSRR.gif"
 
 
 export default {
-  images: {
-    AS:AS,
-    ABB:ABB,
-    APAN:APAN,
-    B1:B1,
-    BL:BL,
-    DH:DH,
+  locations: {
+    ASS:ASS,
+    ABBS:ABBS,
+    APANS:APANS,
+    B1S:B1S,
+    BLS:BLS,
     DHS:DHS,
-    DS:DS,
+    DHSS:DHSS,
     DSS:DSS,
-    FH:FH,
+    DSSS:DSSS,
     FHS:FHS,
-    GGS:GGS,
-    GYM:GYM,
-    HO:HO,
-    L1C:L1C,
-    L1S:L1S,
-    MPC:MPC,
-    RR:RR,
-    RRS:RRS
+    FHSS:FHSS,
+    GGSS:GGSS,
+    GYMS:GYMS,
+    HOS:HOS,
+    L1CS:L1CS,
+    L1SS:L1SS,
+    MPCS:MPCS,
+    RRS:RRS,
+    RRSS:RRSS
+  },
+
+  locationl: {
+    ASL:ASL,
+    ABBL:ABBL,
+    APANL:APANL,
+    B1L:B1L,
+    BLL:BLL,
+    DHL:DHL,
+    DHSL:DHSL,
+    DSL:DSL,
+    DSSL:DSSL,
+    FHL:FHL,
+    FHSL:FHSL,
+    GGSL:GGSL,
+    GYML:GYML,
+    HOL:HOL,
+    L1CL:L1CL,
+    L1SL:L1SL,
+    MPCL:MPCL,
+    RRL:RRL,
+    RRSL:RRSL
   },
 
   mapList: [
     {
-      Image: HO,
+      Image: HOS,
       Name: "Hall Office",
       Key: "HO"
     },
     {
-      Image: GGS,
+      Image: GGSS,
       Name: "Golden Gate Stairs",
       Key: "GGS"
     },
     {
-      Image: BL,
+      Image: BLS,
       Name: "B Lounge",
       Key: "BL"
     },
     {
-      Image: DH,
+      Image: DHS,
       Name: "DH",
       Key: "DH"
     },
     {
-      Image: DS,
+      Image: DSS,
       Name: "Dance Studio",
       Key: "DS"
     },
     {
-      Image: FH,
+      Image: FHS,
       Name: "Function Hall",
       Key: "FH"
     },
     {
-      Image: GYM,
+      Image: GYMS,
       Name: "Gym",
       Key: "GYM"
     },
     {
-      Image: MPC,
+      Image: MPCS,
       Name: "MPC",
       Key: "MPC"
     },
     {
-      Image: ABB,
+      Image: ABBS,
       Name: "A/B Bridge",
       Key: "ABB"
     },
     {
-      Image: B1,
+      Image: B1S,
       Name: "Main Bridge",
       Key: "B1"
     }

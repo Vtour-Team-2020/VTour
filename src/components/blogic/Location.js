@@ -30,7 +30,8 @@ export default class Location {
         this.photo = locationJSON.photo;
         this.video = locationJSON.video;
 
-        this.locationPic = locationJSON.locationPic;
+        this.locationPics = locationJSON.locationPics;
+        this.locationPicl = locationJSON.locationPicl;
 
         this.eventList = []
         this.eventList = Eventlist;
@@ -83,8 +84,12 @@ export default class Location {
         }        
     }
 
-    getLocationPic(){
-        return this.locationPic;
+    getLocationPics(){
+        return this.locationPics;
+    }
+
+    getLocationPicl(){
+        return this.locationPicl;
     }
 
     getEventList(){
