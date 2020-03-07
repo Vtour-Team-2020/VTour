@@ -54,7 +54,7 @@ class Tour extends React.Component {
       stopPicl: "",
 
       staticMount: false,
-      delay:6000
+      delay:7000
     };
 
     // binding all these methods to the child components to access their state update

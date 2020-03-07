@@ -39,10 +39,7 @@ class ProtraitReminder extends React.Component{
                     for better experience
                     </h3>
 
-                    <h7 style = {{ fontFamily : "Trebuchet MS"}}>
-                    You are advised to use while connected to Wifi
-                    <p></p><p></p>
-                    </h7>
+
 
 
                     <Box
@@ -57,9 +54,14 @@ class ProtraitReminder extends React.Component{
                     <Alert color="yellow"></Alert> Not working on Desktop? 
                     </h7>
                     
-
+                    
+                    
                     <h7>
                     Try your mobile devices
+                    </h7>
+                    <h7 style = {{ fontFamily : "Trebuchet MS"}}><p></p>
+                    <Alert color="yellow"></Alert>
+                    You are advised to use while connected to Wifi
                     </h7>
                     </Box>
             </Box>

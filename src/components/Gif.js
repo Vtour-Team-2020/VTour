@@ -7,6 +7,8 @@ import { Box, Image, Stack } from "grommet";
 //
 import Media from "react-media";
 
+import BarLoader from "react-spinners/BarLoader"
+
 class Gif extends React.Component {
   constructor(props) {
     super(props);
@@ -44,6 +46,7 @@ class Gif extends React.Component {
                   justify="center"
                   align="center"
                 >
+                
                   {!this.props.userActive && (
                     <Box justify="center">
                       <Image fit="cover" src={this.props.static} />
@@ -54,12 +57,13 @@ class Gif extends React.Component {
                     <Box justify="center">
                       <Stack anchor="center" alignSelf="center">
                         {" "}
+                        <BarLoader height={20} width={150} color="yellow"/>
                         <Box
                           width="550px"
                           height="310px"
                           justify="center"
                           align="center"
-                        >
+                        >   
                           <Image fit="cover" src={this.props.movingPic} />
                         </Box>
                         {!this.props.moving && (
