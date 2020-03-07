@@ -36,8 +36,8 @@ class RightActionBar extends React.Component {
 
     // const MapList = mediaResource.mapList;
     const MapList = mediaResource.mapList;
-
-
+    console.log(MapList)
+    console.log(this.props.eventList)
 
     return (
       <Media
@@ -195,7 +195,7 @@ class RightActionBar extends React.Component {
                                   // width="370px"
                                   height="170px"
                                 >
-                                  <Image src={datum.Key} fit="contain" />
+                                  <Image src={datum.Image} fit="contain" />
                                 </Box>
                                 <Box
                                   width="340px"

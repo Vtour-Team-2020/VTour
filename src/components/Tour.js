@@ -50,7 +50,9 @@ class Tour extends React.Component {
       hasEvent: false,
       moving: false,
       Juice: "",
-      movingPic: ""
+      movingPic: "",
+
+      staticMount: false
     };
 
     // binding all these methods to the child components to access their state update
@@ -73,6 +75,8 @@ class Tour extends React.Component {
 
     //
     this.getJumpLocationUpdate = this.getJumpLocationUpdate.bind(this);
+
+    this.staticDidMount = this.staticDidMount.bind(this);
   }
 
   render() {
@@ -120,10 +124,12 @@ class Tour extends React.Component {
                   align="center"
                 >
                   {!this.state.userActive && (
-                    <Gif
-                      entrance={this.state.entrance}
-                      userActive={this.state.userActive}
-                    />
+                    <Box justify="center">
+                      <Gif
+                        entrance={this.state.entrance}
+                        userActive={this.state.userActive}
+                      />
+                    </Box>
                   )}
                   {this.state.userActive &&
                     (this.state.moving ? (
@@ -131,9 +137,9 @@ class Tour extends React.Component {
                         entrance={this.state.movingPic}
                         userActive={this.state.userActive}
                       />
-                    ) : (
-                      <Gif
-                        entrance={this.state.stoppic}
+                    ) : ( 
+                      <Static
+                        entrance={this.state.movingPic}
                         userActive={this.state.userActive}
                       />
                     ))}
@@ -194,9 +200,9 @@ class Tour extends React.Component {
                         entrance={this.state.movingPic}
                         userActive={this.state.userActive}
                       />
-                    ) : (
-                      <Gif
-                        entrance={this.state.stoppic}
+                    ) : ( 
+                      <Static
+                        entrance={this.state.movingPic}
                         userActive={this.state.userActive}
                       />
                     ))}
@@ -252,16 +258,15 @@ class Tour extends React.Component {
                       userActive={this.state.userActive}
                     />
                   )}
-
                   {this.state.userActive &&
                     (this.state.moving ? (
                       <Gif
                         entrance={this.state.movingPic}
                         userActive={this.state.userActive}
                       />
-                    ) : (
-                      <Gif
-                        entrance={this.state.stoppic}
+                    ) : ( 
+                      <Static
+                        entrance={this.state.movingPic}
                         userActive={this.state.userActive}
                       />
                     ))}
@@ -346,6 +351,11 @@ class Tour extends React.Component {
   }
 
   getLeftActionUpdate() {
+    //
+    this.setState({
+      staticMount: false
+    });
+
     this.setState({ moving: true });
     if (this.state.currentUser.getTransitionGif("left") !== undefined) {
       this.setState({
@@ -385,7 +395,7 @@ class Tour extends React.Component {
     var stoppic = this.state.currentUser.getCurrentLocationPic();
 
     if (stoppic) {
-      this.setState({ mainPic: stoppic, jumped: false });
+      this.setState({ movingPic: stoppic, jumped: false });
     }
   }
 
@@ -489,6 +499,12 @@ class Tour extends React.Component {
   componentDidMount() {
     console.log(this.state.currentUser.getLocationInfo());
     this.updateLocationStates(this.state.currentUser.getLocationInfo());
+  }
+
+  staticDidMount() {
+    this.setState({
+      staticMount: true
+    });
   }
 
   //delay implemented here

@@ -10,6 +10,7 @@ import Media from "react-media";
 class Static extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {
