@@ -24,13 +24,11 @@ class LeftActionBar extends React.Component {
 
     return (
       <Media
-        queries={{
-          smallphones: "(max-height: 373px)",
-          regularPhones: "(min-height: 374px) and (max-height: 600px)",
-          large:
-            "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
-          desktop: "(min-width: 1026px) and (min-height: 769px)"
-        }}
+      queries={{
+        smallphones: "(max-height: 373px)",
+        regularPhones: "(min-height: 374px) and (max-height: 600px)",
+        large: "(min-width: 731px) and (min-height: 700px)"
+      }}
       >
         {matches => (
           <Fragment>

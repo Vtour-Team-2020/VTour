@@ -72,7 +72,7 @@ export default {
     leftVideo: null,
     rightVideo: null,
 
-    juice: "Residential Lounge - Another place to chill and study with your mates. Different lounges are equipped with different goodies like Majong tables, darts and mini table tennis tables."
+    juice: "Residential Lounge - Another place to chill and study with your mates. Different lounges are equipped with different goodies like PS4, darts and mini table tennis tables."
   },
   AS: {
     name: "AS",

@@ -4,7 +4,7 @@ import Media from "react-media";
 import { Box, Button, Layer, Text, Image, List } from "grommet";
 import { Info, FormClose, Projects, Waypoint } from "grommet-icons";
 
-import mediaResource from "./blogic/mediamapping"
+import mediaResource from "./blogic/mediamapping";
 
 class RightActionBar extends React.Component {
   constructor(props) {
@@ -13,14 +13,11 @@ class RightActionBar extends React.Component {
     this.state = {
       showLocationDetail: false,
       showImage: false,
-      showEvent: false,
+      showEvent: true,
       showMap: false
     };
 
     this.activateHelp = this.activateHelp.bind(this);
-    this.deactivateHelp = this.deactivateHelp.bind(this);
-
-    this.activateImage = this.activateImage.bind(this);
     this.deactivateHelp = this.deactivateHelp.bind(this);
 
     this.activateEvent = this.activateEvent.bind(this);
@@ -33,7 +30,6 @@ class RightActionBar extends React.Component {
   }
 
   render() {
-
     // const MapList = mediaResource.mapList;
     const MapList = mediaResource.mapList;
     return (
@@ -41,15 +37,12 @@ class RightActionBar extends React.Component {
         queries={{
           smallphones: "(max-height: 373px)",
           regularPhones: "(min-height: 374px) and (max-height: 600px)",
-          large:
-            "(min-width: 731px) and (min-height: 700px) and (max-width:1025px) and (max-height:768px)",
-          desktop: "(min-width: 1026px) and (min-height: 769px)"
+          large: "(min-width: 731px) and (min-height: 700px)"
         }}
       >
         {matches => (
           <Fragment>
             {/* Start of the small phone component */}
-           
 
             {/* Start of regular phone component */}
             {(matches.regularPhones || matches.smallphones || matches.large) &&
@@ -78,7 +71,7 @@ class RightActionBar extends React.Component {
                       <Layer
                         onEsc={() => this.deactivateHelp()}
                         onClickOutside={() => this.deactivateHelp()}
-                        position="bottom"
+                        position="center"
                         modal={true}
                         responsive={false}
                         margin={{ vertical: "medium", horizontal: "small" }}
@@ -138,7 +131,7 @@ class RightActionBar extends React.Component {
                       <Layer
                         onEsc={() => this.deactivateMap()}
                         onClickOutside={() => this.deactivateMap()}
-                        position="bottom"
+                        position="center"
                         modal={true}
                         responsive={false}
                         margin={{ vertical: "medium", horizontal: "small" }}
@@ -233,11 +226,11 @@ class RightActionBar extends React.Component {
                       />
                     )}
 
-                    {this.state.showEvent && (
+                    {this.state.showEvent && this.props.hasEvent && (
                       <Layer
                         onEsc={() => this.deactivateEvent()}
                         onClickOutside={() => this.deactivateEvent()}
-                        position="bottom"
+                        position="center"
                         modal={true}
                         responsive={false}
                         margin={{ vertical: "medium", horizontal: "small" }}
@@ -290,10 +283,7 @@ class RightActionBar extends React.Component {
                                 pad="medium"
                                 align="center"
                               >
-                                <Box
-                                  // width="370px"
-                                  height="170px"
-                                >
+                                <Box height="170px">
                                   <Image src={datum.Image} fit="contain" />
                                 </Box>
                                 <Box
@@ -341,12 +331,12 @@ class RightActionBar extends React.Component {
                   </Box>
                 </Box>
               ))}
-
-                   </Fragment>
+          </Fragment>
         )}
       </Media>
     );
   }
+
   activateHelp() {
     this.setState(function() {
       return {
@@ -361,26 +351,15 @@ class RightActionBar extends React.Component {
     });
   }
 
-  activateImage() {
-    this.setState(function() {
-      return {
-        showImage: true
-      };
-    });
-  }
-
-  deactivateImage() {
-    this.setState({
-      showImage: false
-    });
-  }
-
   activateEvent() {
     this.setState({ showEvent: true });
   }
 
   deactivateEvent() {
-    this.setState({ showEvent: false });
+    this.setState({
+      showEvent: false,
+      showedEvent: this.state.showedEvent + 1
+    });
   }
 
   activateMap() {
@@ -394,6 +373,12 @@ class RightActionBar extends React.Component {
   jump(location) {
     this.deactivateMap();
     this.props.getJumpLocationUpdate(location);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({
+      showEvent: true
+    });
   }
 }
 

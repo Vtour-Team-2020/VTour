@@ -47,7 +47,6 @@ import FHCULT from "./resource/event/FHCULT.jpg"
 import FHSTT from "./resource/event/FHSTT.jpg"
 import GGSHRB from "./resource/event/GGSHRB.jpg"
 import GGSBANREV1 from "./resource/event/GGSBANREV1.jpg"
-import GGSBANREV2 from "./resource/event/GGSBANREV2.jpg"
 import GYMIHG from "./resource/event/GYMIHG.jpg"
 import HALLOWDH from "./resource/event/HALLOWDH.jpg"
 import HALLOWFH from "./resource/event/HALLOWFH.jpg"
@@ -252,19 +251,19 @@ export default {
     GGS : [
       {
         Image:GGSBANREV1,
-        Caption:"Internal IHG openning ceremony is held here."
+        Caption:"Internal IHG openning ceremony is held here, read more about our IHG journey here: eusoffhall.wordpress.com/"
       },
   
       {
         Image:GGSHRB,
-        Caption:"Some makeups make Eusoff much prettier than she already is. This is one of the many hall wide events organised by Hall Relations Board"
+        Caption:"Some makeups make Eusoff much prettier than she already is. This is taken during 'Food Trail' - one of the many hall wide events organised by Hall Relations Board"
       }
   
     ],
     DS : [
       {
         Image:DP,
-        Caption:"Where DP is freshly baked"
+        Caption:"Where the annual Dance Production is freshly baked"
       }
     ],
     ABB : [
@@ -282,7 +281,7 @@ export default {
     FHS : [
       {
         Image:FHSTT,
-        Caption:"Every place in Eusoff is training ground for the atheletes, even this space outside FH."
+        Caption:"This open area is frequently used by our table tennis team for training when the Function Hall is occupied by other CCAs."
       }
     ],
     B1 : [

@@ -10,9 +10,6 @@ import Media from "react-media";
 import BarLoader from "react-spinners/BarLoader"
 
 class Gif extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let component = (
