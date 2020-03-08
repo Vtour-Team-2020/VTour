@@ -53,7 +53,7 @@ import HALLOWFH from "./resource/event/HALLOWFH.jpg"
 import IBG from "./resource/event/IBG.jpg"
 import MPCVB from "./resource/event/MPCVB.jpg"
 import PANSUP from "./resource/event/PANSUP.jpg"
-
+import RRBOON from "./resource/event/RRBOON.png"
 
 import ABBAS from "./resource/gif/ABBAS.gif"
 import ABBB1 from "./resource/gif/ABBB1.gif"
@@ -288,6 +288,12 @@ export default {
       {
         Image:B1BANREV,
         Caption:"During IHG openening ceremony, Eusoffians line up on this bridge to witness the investiture of Captains."
+      }
+    ],
+    RR : [
+      {
+        Image:RRBOON,
+        Caption:"We are also incredibly hardworking and innovative, average CAP in Hall is 4.9. (Post taken from NUS Computing Instagram page)"
       }
     ]
   },

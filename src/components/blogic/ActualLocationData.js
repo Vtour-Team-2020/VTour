@@ -318,7 +318,7 @@ export default {
     name: "DHS",
 
     upNeighbour: null,
-    downNeighbour: "HO",
+    downNeighbour: "RRS",
     leftNeighbour: "DH",
     rightNeighbour: "FHS",
 
