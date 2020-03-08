@@ -210,7 +210,7 @@ export default {
       },
       {
         Image:IBG,
-        Caption:"Inter-block games - a change for freshmen to display their athletic talents (or lack of)."
+        Caption:"Inter-block games - a chance for freshmen to display their athletic talents (or lack of)."
       },
     ],
   
