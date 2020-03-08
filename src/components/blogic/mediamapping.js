@@ -54,6 +54,7 @@ import IBG from "./resource/event/IBG.jpg"
 import MPCVB from "./resource/event/MPCVB.jpg"
 import PANSUP from "./resource/event/PANSUP.jpg"
 import RRBOON from "./resource/event/RRBOON.png"
+import BLBD from "./resource/event/BLBD.png"
 
 import ABBAS from "./resource/gif/ABBAS.gif"
 import ABBB1 from "./resource/gif/ABBB1.gif"
@@ -288,6 +289,12 @@ export default {
       {
         Image:B1BANREV,
         Caption:"During IHG openening ceremony, Eusoffians line up on this bridge to witness the investiture of Captains."
+      }
+    ],
+    BL : [
+      {
+        Image:BLBD,
+        Caption:"Most played song is probably happy birthday - a cozy and wholesome place for the block to mingle."
       }
     ],
     RR : [
