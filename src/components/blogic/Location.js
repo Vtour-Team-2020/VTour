@@ -35,6 +35,8 @@ export default class Location {
 
         this.eventList = []
         this.eventList = Eventlist;
+
+        this.visited = false;
     }
 
     getNeighbourName(direction){
@@ -60,8 +62,12 @@ export default class Location {
             leftNeighbour : this.leftNeighbour,
             rightNeighbour : this.rightNeighbour,
 
-            juice : this.juice
+            juice : this.juice,
+            visited : this.visited
         }
+
+        this.visited = true;
+
         return LocationInfo
     }
 

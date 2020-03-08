@@ -226,7 +226,7 @@ class RightActionBar extends React.Component {
                       />
                     )}
 
-                    {this.state.showEvent && this.props.hasEvent && (
+                    {(this.state.showEvent && this.props.hasEvent  && !this.props.visited) && (
                       <Layer
                         onEsc={() => this.deactivateEvent()}
                         onClickOutside={() => this.deactivateEvent()}

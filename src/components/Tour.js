@@ -53,6 +53,8 @@ class Tour extends React.Component {
       stopPics: "",
       stopPicl: "",
 
+      visited:"",
+
       staticMount: false,
       delay:6000
     };
@@ -149,6 +151,7 @@ class Tour extends React.Component {
                   hasEvent={this.state.hasEvent}
                   onRightBar={this.state.onRightBar}
                   juice={this.state.juice}
+                  visited={this.state.visited}
                 />
               </Box>
             )}
@@ -311,6 +314,7 @@ class Tour extends React.Component {
     // update state in tour.js
     this.setState(function() {
       return {
+        visited: locationInfo.visited,
         canMoveUp: newUp,
         canMoveDown: newDown,
         canMoveLeft: newLeft,
