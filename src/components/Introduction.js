@@ -1,43 +1,33 @@
-import React from 'react';
-import { Main, Heading, Box } from 'grommet';
+import React from "react";
+import { Main, Heading, Box } from "grommet";
 
-class Sample extends React.Component{
-    constructor(props) {
-        super(props);
+class Introduction extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      delay: true
+    };
+  }
 
-        this.sayHello = this.sayHello.bind(this);
-        
-        this.state = {
-        };
-    }
-
-    sayHello(){
-        alert('hello');
-    }
-    
-    render(){
-
-        const Component =         
-        <Box 
-            justify="center" 
-            align="center" 
-            pad="medium"
-            // height="small"
-            width = "100%"
-        >
-            <Main>
-            <Heading
-                    alignSelf = "center"
-                    level = "1"
-                    color = "white">
-                    <span style = {{ fontFamily : "Trebuchet MS"}}>
-                    <span style = {{ color : "yellow", fontStyle: "italic" }} >EUSOFF</span> Online
-                    </span>
+  render() {
+    const Component = (
+      <div>
+        <Box direction="column" justify="center" align="center" width="100%">
+          <Main>
+            <Heading level="1" color="white">
+              <span style={{ fontFamily: "Trebuchet MS" }}>
+                <span style={{ color: "yellow", fontStyle: "italic" }}>
+                  EUSOFF
+                </span>{" "}
+                Virtual Tour
+              </span>
             </Heading>
-            </Main>
+          </Main>
         </Box>
-        return (Component)
-    }
+      </div>
+    );
+    return Component;
+  }
 }
 
-export default Sample;
+export default Introduction;
